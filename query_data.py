@@ -11,7 +11,6 @@ from langchain_community.embeddings.ollama import OllamaEmbeddings
 BOOKS_PATH = "/Users/chara/Documents/thesis/scripts_v2/books/"
 MODEL = "nomic-embed-text"
 CHROMA_PATH = f"./{MODEL}_db"
-SUMMARIES_FILE = "/Users/chara/Documents/thesis/scripts_v2/summaries.txt"
 
 model = Ollama(model="mistral")
 embedding_function = OllamaEmbeddings(model=MODEL)
@@ -87,21 +86,31 @@ def query_rag(query_text: str, book_for_qa):
 
     collection = vectorstore._client.get_collection(book_for_qa)
     data = collection.get(include=["documents", "embeddings"])
-    
+
     raw_documents = data.get("documents", [])
     documents = [Document(page_content=doc) for doc in raw_documents if isinstance(doc, str)]  # Έλεγχος για έγκυρα strings
     embeddings = np.array(data.get("embeddings", []))  # Μετατροπή σε numpy array
-    
+
+    # Debug checks
+    print(f"Collection: {collection}")
+    print(f"Data: {data}")
+    print(f"Documents: {documents}")
+    print(f"Embeddings: {embeddings}")
+
     if not documents:
         print("❌ No valid documents found for this book!")
         return
-    
+
     if not collection:
         return "Book not found in the database."
-    
 
     # Search the DB.
-    results = vectorstore.similarity_search_with_score(query_text, k=5, filter={"book": collection}) #λαθος συνταξη
+    results = vectorstore.similarity_search_with_score(query_text, k=5, filter={"collection": book_for_qa})
+
+    if not results:
+        print("❌ No results found for the query!")
+        return
+
     print(results[0])
     context_text = "\n\n---\n\n".join([doc.page_content for doc in results])
     prompt_template = ChatPromptTemplate.from_template(PROMPT_TEMPLATE)
@@ -109,7 +118,6 @@ def query_rag(query_text: str, book_for_qa):
     print(prompt)
 
     response_text = model.invoke(prompt)
-
     sources = [doc.metadata.get("id", None) for doc in results]
     formatted_response = f"Response: {response_text}\nSources: {sources}"
     print(formatted_response)

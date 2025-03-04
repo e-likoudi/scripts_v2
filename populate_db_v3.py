@@ -14,7 +14,6 @@ CHROMA_PATH = f"./{MODEL}_db"
 
 client = chromadb.PersistentClient(CHROMA_PATH)
 
-#afth einai mia allagh
 
 def load_pdf(file_name):
     loader = PyPDFDirectoryLoader(BOOKS_PATH, glob=file_name)   #glob=file_name: διαβαζει ενα ενα τα αρχεια οχι ολο το folder μαζι
