@@ -104,14 +104,16 @@ def query_rag(query_text: str, book_for_qa):
     if not collection:
         return "Book not found in the database."
 
+    query_vector = embedding_function.embed_documents(query_text)
+
     # Search the DB.
-    results = vectorstore.similarity_search_with_score(query_text, k=5) # results empty list
+    results = vectorstore.similarity_search_with_score(query_vector, k=5, filter={"collection": book_for_qa}) # results empty list 
 
     if not results:
         print("❌ No results found for the query!")
         return
 
-    print(results[0])
+    print(results)
     context_text = "\n\n---\n\n".join([doc.page_content for doc in results])
     prompt_template = ChatPromptTemplate.from_template(PROMPT_TEMPLATE)
     prompt = prompt_template.format(context=context_text, question=query_text)
