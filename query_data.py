@@ -1,6 +1,7 @@
 import argparse
 import numpy as np
 import ollama
+from typing import List, Dict
 from langchain.schema import Document
 from langchain_community.vectorstores.chroma import Chroma
 from langchain.prompts import ChatPromptTemplate
@@ -86,6 +87,7 @@ def query_rag(query_text: str, book_for_qa):
     collection = vectorstore._client.get_collection(book_for_qa)
 
     data = collection.get(include=["documents", "embeddings"])
+    metadatas = collection.get(include=["metadatas"])
 
     raw_documents = data.get("documents", [])
     documents = [Document(page_content=doc) for doc in raw_documents if isinstance(doc, str)]  # Έλεγχος για έγκυρα strings
@@ -104,11 +106,11 @@ def query_rag(query_text: str, book_for_qa):
     if not collection:
         return "Book not found in the database."
 
-    query_vector = embedding_function.embed_documents(query_text)
+    query_vector = embedding_function.embed_documents(query_text)   # Embed the query text
 
     # Search the DB.
-    results = vectorstore.similarity_search_with_score(query_vector, k=5, filter={"collection": book_for_qa}) # results empty list 
-
+    results = vectorstore.similarity_search_with_score(query_vector, k=5, filter=List[Dict[documents: str, embeddings: int]], where_document=book_for_qa)  
+    # TypeError: Parameters to generic types must be types. Got slice([Document(metadata={}, page_content='MONOPOLY \nProperty Trading Game from Parker Brothers" \n.
     if not results:
         print("❌ No results found for the query!")
         return
