@@ -106,11 +106,12 @@ def query_rag(query_text: str, book_for_qa):
     if not collection:
         return "Book not found in the database."
 
-    query_vector = embedding_function.embed_documents(query_text)   # Embed the query text
+    #query_vector = embedding_function.embed_documents(query_text)   # Embed the query text
 
     # Search the DB.
-    results = vectorstore.similarity_search_with_score(query_vector, k=5, filter=List[Dict[documents: str, embeddings: int]], where_document=book_for_qa)  
-    # TypeError: Parameters to generic types must be types. Got slice([Document(metadata={}, page_content='MONOPOLY \nProperty Trading Game from Parker Brothers" \n.
+    results = vectorstore.similarity_search_with_score(query_text, k=5, filter=List[dict[str, float]], where_document=book_for_qa)  
+    # ValueError: Expected where to be a dict, got typing.List[dict[str, float]] in query.
+
     if not results:
         print("❌ No results found for the query!")
         return
