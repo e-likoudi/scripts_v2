@@ -87,10 +87,11 @@ def query_rag(query_text: str, book_for_qa):
     collection = vectorstore._client.get_collection(book_for_qa)
 
     data = collection.get(include=["documents", "embeddings"])
-    metadatas = collection.get(include=["metadatas"])
+    #metadatas = collection.get(include=["metadatas"])
 
     raw_documents = data.get("documents", [])
     documents = [Document(page_content=doc) for doc in raw_documents if isinstance(doc, str)]  # Έλεγχος για έγκυρα strings
+    documents = np.array(data.get("documents", []))
     embeddings = np.array(data.get("embeddings", []))  # Μετατροπή σε numpy array
 
     # Debug checks
@@ -99,22 +100,22 @@ def query_rag(query_text: str, book_for_qa):
     #print(f"Documents: {documents}")
     #print(f"Embeddings: {embeddings}")
 
-    if not documents:
-        print("❌ No valid documents found for this book!")
-        return
+    #if not documents:
+        #print("❌ No valid documents found for this book!")
+        #return
 
     if not collection:
         return "Book not found in the database."
 
     #query_vector = embedding_function.embed_documents(query_text)   # Embed the query text
-    vectordb = Chroma(
-        collection_name=book_for_qa,  
-        persist_directory=CHROMA_PATH,
-        embedding_function=embeddings
-        )
+    #vectordb = Chroma(
+        #collection_name=book_for_qa,  
+        #persist_directory=CHROMA_PATH,
+        #embedding_function=embeddings
+        #)
 
     # Search the DB.
-    results = vectordb.similarity_search_with_score(query_text, k=5, filter={"documents":"page_content"}) #AttributeError: 'numpy.ndarray' object has no attribute 'embed_query'
+    results = vectorstore.similarity_search_with_score(query_text, k=5, filter={documents:"page_content"}) #TypeError: unhashable type: 'numpy.ndarray'
 
     if not results:
         print("❌ No results found for the query!")
