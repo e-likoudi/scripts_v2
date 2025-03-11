@@ -110,13 +110,11 @@ def query_rag(query_text: str, book_for_qa):
     vectordb = Chroma(
         collection_name=book_for_qa,  
         persist_directory=CHROMA_PATH,
-        embedding_function=embedding_function
+        embedding_function=embeddings
         )
-   
 
     # Search the DB.
-    results = vectordb.similarity_search_with_score(query_text, k=5)  
-    # chromadb.errors.InvalidDimensionException: Embedding dimension 768 does not match collection dimensionality 384
+    results = vectordb.similarity_search_with_score(query_text, k=5, filter={"documents":"page_content"}) #AttributeError: 'numpy.ndarray' object has no attribute 'embed_query'
 
     if not results:
         print("❌ No results found for the query!")
