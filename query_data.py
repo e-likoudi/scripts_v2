@@ -107,10 +107,16 @@ def query_rag(query_text: str, book_for_qa):
         return "Book not found in the database."
 
     #query_vector = embedding_function.embed_documents(query_text)   # Embed the query text
+    vectordb = Chroma(
+        collection_name=book_for_qa,  
+        persist_directory=CHROMA_PATH,
+        embedding_function=embedding_function
+        )
+   
 
     # Search the DB.
-    results = vectorstore.similarity_search_with_score(query_text, k=5, filter=List[dict[str, float]], where_document=book_for_qa)  
-    # ValueError: Expected where to be a dict, got typing.List[dict[str, float]] in query.
+    results = vectordb.similarity_search_with_score(query_text, k=5)  
+    # chromadb.errors.InvalidDimensionException: Embedding dimension 768 does not match collection dimensionality 384
 
     if not results:
         print("❌ No results found for the query!")
