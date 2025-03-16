@@ -114,7 +114,7 @@ def query_rag(query_text: str, book_for_qa):
         #)
 
     # Search the DB.
-    results = vectorstore.similarity_search_with_score(query_text, k=5) #TypeError: unhashable type: 'numpy.ndarray'
+    results = vectorstore.similarity_search_with_score(query_text, k=5) # empty list
 
     if not results:
         print("❌ No results found for the query!")

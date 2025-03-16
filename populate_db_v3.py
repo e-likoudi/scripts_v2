@@ -64,25 +64,22 @@ def process_pdf(file_name, chunks):                   #Process a single PDF file
 
     # Prepare data for adding to the collection
     documents_to_add = []
-    for chunk in chunks_with_ids:           # Ensure the chunk ID is unique
-
+    embeddings_to_add = []  # added this
+    ids_to_add = []  
+    for chunk, embedding in zip(chunks_with_ids, chunks_with_embeddings):
+         # Ensure the chunk ID is unique
         if chunk.metadata["id"] not in existing_ids:
-            documents_to_add.append(chunk.page_content)  
-              
-
-    # Add documents to the collection
-    if documents_to_add:
-        for i, chunk in enumerate(chunks):
-            embedding = chunks_with_embeddings[i]
-            metadata = {"source": file_name, "chunk_index": chunks_with_ids[i]}
-            doc_id = f"{collection_name}_{i}"
-
-            try:
-                collection.add(ids=[doc_id], documents=[chunk], embeddings=[embedding], metadatas=[metadata])  
-
-                print(f"📥 Added {len(documents_to_add)} chunks to the collection '{collection_name}'.")
-            except Exception as e:
-                print(f"❌ Failed to add chunks to the collection '{collection_name}': {e}")    #error somewhere around here
+            documents_to_add.append(chunk.page_content) 
+            embeddings_to_add.append(embedding)     # added this
+            ids_to_add.append(chunk.metadata["id"])  
+ 
+     # Add documents to the collection
+    if documents_to_add or embeddings_to_add:
+        try:
+            collection.add(documents=documents_to_add, ids=ids_to_add, embeddings=embeddings_to_add, metadatas=[chunk.metadata for chunk in chunks_with_ids])  # added embeddings and metadatas
+            print(f"📥 Added {len(documents_to_add)} chunks to the collection '{collection_name}'.")
+        except Exception as e:
+            print(f"❌ Failed to add chunks to the collection '{collection_name}': {e}")
     else:
         print(f"No new chunks to add for '{collection_name}'.")
 
