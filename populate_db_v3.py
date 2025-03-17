@@ -41,7 +41,7 @@ def calculate_chunk_embeddings(chunks: list[Document]):
 
 
 
-def process_pdf(file_name, chunks):                   #Process a single PDF file and add its data to the corresponding Chroma collection.
+def process_pdf(file_name, chunks):                   # Process a single PDF file and add its data to the corresponding Chroma collection.
 
     collection_name = os.path.splitext(file_name)[0]  # Get the name without .pdf extension
 
@@ -76,7 +76,11 @@ def process_pdf(file_name, chunks):                   #Process a single PDF file
      # Add documents to the collection
     if documents_to_add or embeddings_to_add:
         try:
-            collection.add(documents=documents_to_add, ids=ids_to_add, embeddings=embeddings_to_add, metadatas=[chunk.metadata for chunk in chunks_with_ids])  # added embeddings and metadatas
+            collection.add(documents=documents_to_add, 
+                           ids=ids_to_add, 
+                           embeddings=embeddings_to_add, 
+                           metadatas=[chunk.metadata for chunk in chunks_with_ids])  # added embeddings and metadatas
+            
             print(f"📥 Added {len(documents_to_add)} chunks to the collection '{collection_name}'.")
         except Exception as e:
             print(f"❌ Failed to add chunks to the collection '{collection_name}': {e}")

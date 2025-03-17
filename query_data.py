@@ -1,7 +1,5 @@
-import argparse
 import numpy as np
 import ollama
-from typing import List, Dict
 from langchain.schema import Document
 from langchain_community.vectorstores.chroma import Chroma
 from langchain.prompts import ChatPromptTemplate
@@ -88,6 +86,7 @@ def query_rag(query_text: str, book_for_qa):
 
     data = collection.get(include=["documents", "embeddings"])
     metadatas = collection.get(include=["metadatas"])
+    page = metadatas.get("chroma:document")
 
     raw_documents = data.get("documents", [])
     documents = [Document(page_content=doc) for doc in raw_documents if isinstance(doc, str)]  # Έλεγχος για έγκυρα strings
@@ -106,22 +105,24 @@ def query_rag(query_text: str, book_for_qa):
     if not collection:
         return "Book not found in the database."
 
-    #query_vector = embedding_function.embed_documents(query_text)   # Embed the query text
+    query_vector = embedding_function.embed_documents(query_text)   # Embed the query text
     #vectordb = Chroma(
         #collection_name=book_for_qa,  
         #persist_directory=CHROMA_PATH,
         #embedding_function=embeddings
         #)
 
+    vectordb = vectorstore.from_documents(collection_name=book_for_qa, documents=documents, embedding=embedding_function)  # Ετσι περναει το similarity search
+
     # Search the DB.
-    results = vectorstore.similarity_search_with_score(query_text, k=5) # empty list
+    results = vectordb.similarity_search_with_score(query_text, k=5) 
 
     if not results:
         print("❌ No results found for the query!")
         return
 
     print(results)
-    context_text = "\n\n---\n\n".join([doc.page_content for doc in results])
+    context_text = "\n\n---\n\n".join([doc.page_content for doc in results])    # AttributeError: 'tuple' object has no attribute 'page_content'
     prompt_template = ChatPromptTemplate.from_template(PROMPT_TEMPLATE)
     prompt = prompt_template.format(context=context_text, question=query_text)
     print(prompt)
