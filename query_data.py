@@ -86,7 +86,6 @@ def query_rag(query_text: str, book_for_qa):
 
     data = collection.get(include=["documents", "embeddings"])
     metadatas = collection.get(include=["metadatas"])
-    page = metadatas.get("chroma:document")
 
     raw_documents = data.get("documents", [])
     documents = [Document(page_content=doc) for doc in raw_documents if isinstance(doc, str)]  # Έλεγχος για έγκυρα strings
@@ -98,14 +97,14 @@ def query_rag(query_text: str, book_for_qa):
     #print(f"Documents: {documents}")
     #print(f"Embeddings: {embeddings}")
 
-    #if not documents:
-        #print("❌ No valid documents found for this book!")
-        #return
+    if not documents:
+        print("❌ No valid documents found for this book!")
+        return
 
     if not collection:
         return "Book not found in the database."
 
-    query_vector = embedding_function.embed_documents(query_text)   # Embed the query text
+    #query_vector = embedding_function.embed_documents(query_text)   # Embed the query text
     #vectordb = Chroma(
         #collection_name=book_for_qa,  
         #persist_directory=CHROMA_PATH,
@@ -122,13 +121,26 @@ def query_rag(query_text: str, book_for_qa):
         return
 
     print(results)
-    context_text = "\n\n---\n\n".join([doc.page_content for doc in results])    # AttributeError: 'tuple' object has no attribute 'page_content'
+
+    processed_docs = []
+    for doc in results:
+        if isinstance(doc, tuple):  
+            doc = Document(page_content=" ".join(map(str, doc)))  
+        processed_docs.append(doc)
+
+    context_text = "\n\n---\n\n".join([doc.page_content for doc in processed_docs])
+
+
+    #context_text = "\n\n---\n\n".join([doc.page_content for doc in results])    # AttributeError: 'tuple' object has no attribute 'page_content'
     prompt_template = ChatPromptTemplate.from_template(PROMPT_TEMPLATE)
     prompt = prompt_template.format(context=context_text, question=query_text)
     print(prompt)
 
-    response_text = MODEL.invoke(prompt)
-    sources = [doc.metadata.get("id", None) for doc in results]
+    model = Ollama(model="mistral")
+
+    response_text = model.invoke(prompt)
+    sources = [metadatas.get("id", None) for doc, _ in results]  # -> Sources: [None, None, None, None, None]
+    #sources = [doc.metadata.get("id", None) for doc in results]    # AttributeError: 'tuple' object has no attribute 'metadata'
     formatted_response = f"Response: {response_text}\nSources: {sources}"
     print(formatted_response)
     return response_text
