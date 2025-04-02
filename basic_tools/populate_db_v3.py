@@ -104,7 +104,7 @@ def calculate_chunk_ids(chunks: list[Document]):
 
     return chunks
 
-def main():
+def populate_db():
 
     for file_name in os.listdir(BOOKS_PATH):
         if file_name.endswith(".pdf"):
@@ -114,4 +114,4 @@ def main():
             process_pdf(file_name, chunks)
 
 if __name__ == "__main__":
-    main()
+    populate_db()

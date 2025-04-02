@@ -3,7 +3,7 @@ from langchain_community.embeddings.ollama import OllamaEmbeddings
 
 from basic_tools.config import MODEL, CHROMA_PATH, BOOK_FOR_QA, QUESTION
 from basic_tools import CheckChromaIntegrity
-from basic_tools.populate_db_v3 import main as populate_db
+from basic_tools.populate_db_v3 import populate_db
 from basic_tools.query_data import query_rag
 from basic_tools.summaries_v3 import generate_summary
 

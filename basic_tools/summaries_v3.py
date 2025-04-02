@@ -16,12 +16,17 @@ llm3 = ChatOllama(
 )
 
 map_prompt = """
-You will be given a single passage of a book. This section will be enclosed in triple backticks (```)
-Your goal is to give a summary of this section so that a reader will have a full understanding of what happened.
-Your response should be at least three paragraphs and fully encompass what was said in the passage.
+You are an expert research assistant. Summarize the following academic paper section with precision, focusing on objectives, methods, and findings. Maintain a formal tone.
 
-```{text}```
-FULL SUMMARY:
+Input Section: {text}
+
+Summary Structure:
+1. Key Points: [1-2 sentences]
+2. Methodology: [Techniques/data used]
+3. Findings: [Specific results]
+4. Relevance: [Why this matters]
+
+ACADEMIC SUMMARY:
 """
 map_prompt_template = PromptTemplate(template=map_prompt, input_variables=["text"])
 
@@ -31,12 +36,18 @@ map_chain = load_summarize_chain(llm=llm3,
 
 
 combine_prompt = """
-You will be given a series of summaries from a book. The summaries will be enclosed in triple backticks (```)
-Your goal is to give a verbose summary of what happened in the story.
-The reader should be able to grasp what happened in the book.
+Synthesize the following academic paper summaries into a cohesive, professional overview. Prioritize technical accuracy and logical flow.
 
-```{text}```
-VERBOSE SUMMARY:
+Summaries: {text}
+
+Final Summary Structure:
+- Title/Authors: [If available]
+- Objectives: [Research goals]
+- Methods: [Aggregated techniques]
+- Key Results: [Consolidated findings]
+- Implications: [Broader impact]
+
+FINAL ACADEMIC SUMMARY:
 """
 combine_prompt_template = PromptTemplate(template=combine_prompt, input_variables=["text"])
 
