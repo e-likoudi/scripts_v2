@@ -6,6 +6,7 @@ from basic_tools import CheckChromaIntegrity
 from basic_tools.populate_db_v3 import populate_db
 from basic_tools.query_data import query_rag
 from basic_tools.summaries_v3 import generate_summary
+from more_tools.classify_query import classify_query
 
 embedding_function = OllamaEmbeddings(model=MODEL)
 vectorstore = Chroma(persist_directory=CHROMA_PATH, embedding_function=embedding_function)
@@ -34,6 +35,8 @@ def interactive_chat():
           
     try:
         query = QUESTION.strip()
+        query_type = classify_query(query)
+        print(f"Query: {query_type}")
 
         summary_triggers = [
             'summary', 'summarize', 'overview', 

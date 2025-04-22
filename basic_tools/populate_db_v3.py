@@ -54,12 +54,14 @@ def process_pdf(file_name, chunks):        # Process a single PDF file and add i
     documents_to_add = []
     embeddings_to_add = []  
     ids_to_add = []  
+    metadatas_to_add = []
     for chunk, embedding in zip(chunks_with_ids, chunks_with_embeddings):
          # Ensure the chunk ID is unique
         if chunk.metadata["id"] not in existing_ids:
             documents_to_add.append(chunk.page_content) 
             embeddings_to_add.append(embedding)    
-            ids_to_add.append(chunk.metadata["id"])  
+            ids_to_add.append(chunk.metadata["id"]) 
+            metadatas_to_add.append(chunk.metadata) 
  
      # Add documents to the collection
     if documents_to_add or embeddings_to_add:
@@ -67,7 +69,7 @@ def process_pdf(file_name, chunks):        # Process a single PDF file and add i
             collection.add(documents=documents_to_add, 
                            ids=ids_to_add, 
                            embeddings=embeddings_to_add, 
-                           metadatas=[chunk.metadata for chunk in chunks_with_ids]  
+                           metadatas=metadatas_to_add 
                            )  
             
             print(f"Added {len(documents_to_add)} chunks to the collection '{collection_name}'.")
