@@ -21,7 +21,7 @@ Answer the question based on the above context: {question}
 def query_rag(query_text: str, book_for_qa):
 
     collection = vectorstore._client.get_collection(book_for_qa)
-    data = collection.get(include=["documents", "embeddings"])
+    data = collection.get(include=["documents"])
     metadatas = collection.get(include=["metadatas"])
 
     raw_documents = data.get("documents", [])

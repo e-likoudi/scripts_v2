@@ -3,18 +3,16 @@ from pathlib import Path
 sys.path.append(str(Path(__file__).parent.parent))
 
 import ollama
-from langchain_community.vectorstores.chroma import Chroma
 from langchain_community.embeddings.ollama import OllamaEmbeddings
 from sentence_transformers import CrossEncoder
-from basic_tools.config import MODEL, CHROMA_PATH
+from basic_tools.config import MODEL
+from more_tools import SimilarityMethods
 
-embedding_function = OllamaEmbeddings(model=MODEL)
-vectorstore = Chroma(persist_directory=CHROMA_PATH, embedding_function=embedding_function)
 cross_encoder = CrossEncoder("cross-encoder/stsb-roberta-large")
 model="llama3"
 
 
-def factual_retrieval_strategy(query, vector_store, k=4):
+def factual_retrieval_strategy(query, k):
     
     print(f"Executing Factual retrieval strategy for: '{query}'")
     
@@ -47,7 +45,7 @@ def factual_retrieval_strategy(query, vector_store, k=4):
     query_embedding = OllamaEmbeddings(enhanced_query, model=MODEL)
     
     # Perform initial similarity search to retrieve documents
-    initial_results = vector_store.similarity_search(query_embedding, k=k*2)
+    initial_results = SimilarityMethods.factual_similarity(query_embedding, k=k)
     
     # Initialize a list to store ranked results
     ranked_results = []
