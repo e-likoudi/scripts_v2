@@ -3,14 +3,13 @@ from pathlib import Path
 sys.path.append(str(Path(__file__).parent.parent))
 
 import ollama
+from langchain_core.documents import Document  
 from langchain_community.embeddings.ollama import OllamaEmbeddings
 from sentence_transformers import CrossEncoder
 from basic_tools.config import MODEL
 from more_tools import SimilarityMethods
 
-cross_encoder = CrossEncoder("cross-encoder/stsb-roberta-large")
 model="llama3"
-
 
 def factual_retrieval_strategy(query, k):
     
@@ -42,24 +41,36 @@ def factual_retrieval_strategy(query, k):
     print(f"Enhanced query: {enhanced_query}")
     
     # Create embeddings for the enhanced query
-    query_embedding = OllamaEmbeddings(enhanced_query, model=MODEL)
+    embedding_model = OllamaEmbeddings(model=MODEL)
+    query_embedding = embedding_model.embed_query(enhanced_query)
     
     # Perform initial similarity search to retrieve documents
-    initial_results = SimilarityMethods.factual_similarity(query_embedding, k=k)
+    initial_results = SimilarityMethods.factual_similarity(query_embedding, k)
     
     # Initialize a list to store ranked results
     ranked_results = []
     
     # Score and rank documents by relevance using LLM
     for doc in initial_results:
-        relevance_score = score_document_relevance(enhanced_query, doc["text"])
+        # Proper way to handle both Document objects and dictionaries
+        if isinstance(doc, Document):
+            doc_text = doc.page_content
+            doc_metadata = doc.metadata
+            doc_similarity = getattr(doc, 'similarity', 0.0)  # Safe attribute access
+        else:
+            # Handle case where doc might be a dictionary
+            doc_text = doc.get('text', '') if hasattr(doc, 'get') else str(doc)
+            doc_metadata = doc.get('metadata', {}) if hasattr(doc, 'get') else {}
+            doc_similarity = doc.get('similarity', 0.0) if hasattr(doc, 'get') else 0.0
+        
+        relevance_score = score_document_relevance(enhanced_query, doc_text)
         ranked_results.append({
-            "text": doc["text"],
-            "metadata": doc["metadata"],
-            "similarity": doc["similarity"],
+            "text": doc_text,
+            "metadata": doc_metadata,
+            "similarity": doc_similarity,
             "relevance_score": relevance_score
         })
-    
+
     # Sort the results by relevance score in descending order
     ranked_results.sort(key=lambda x: x["relevance_score"], reverse=True)
     

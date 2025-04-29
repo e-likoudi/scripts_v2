@@ -9,7 +9,6 @@ from more_tools import SimilarityMethods
 
 model="llama3"
 
-
 def analytical_retrieval_strategy(query, k):
     
     print(f"Executing Analytical retrieval strategy for: '{query}'")
@@ -46,7 +45,8 @@ def analytical_retrieval_strategy(query, k):
     all_results = []
     for sub_query in sub_queries:
         # Create embeddings for the sub-query
-        sub_query_embedding = OllamaEmbeddings(sub_query, model=MODEL)
+        embedding_model = OllamaEmbeddings(model=MODEL)
+        sub_query_embedding = embedding_model.embed_query(sub_query)
         # Perform similarity search for the sub-query
         results = SimilarityMethods.analytical_sub_similarity(sub_query_embedding, k=k/2)
         all_results.extend(results)
@@ -64,7 +64,8 @@ def analytical_retrieval_strategy(query, k):
     # If we need more results to reach k, add more from initial results
     if len(diverse_results) < k:
         # Direct retrieval for the main query
-        main_query_embedding = OllamaEmbeddings(query, model=MODEL)
+        embedding_model = OllamaEmbeddings(model=MODEL)
+        main_query_embedding = embedding_model.embed_query(query)
         main_results = SimilarityMethods.analytical_main_similarity(main_query_embedding, k=k)
         
         for result in main_results:

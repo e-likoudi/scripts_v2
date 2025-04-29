@@ -2,10 +2,9 @@ import sys
 from pathlib import Path
 sys.path.append(str(Path(__file__).parent.parent))
 
-from langchain.schema import Document
 from langchain_community.vectorstores.chroma import Chroma
 from langchain_community.embeddings.ollama import OllamaEmbeddings
-from basic_tools.config import MODEL, CHROMA_PATH, BOOK_FOR_QA, BOOKS_PATH, QUESTION
+from basic_tools.config import MODEL, CHROMA_PATH, QUESTION
 from more_tools.classify_query import classify_query
 from more_tools.response_generation import generate_response
 from more_tools.ar_core import adaptive_retrieval
@@ -14,8 +13,7 @@ embedding_function = OllamaEmbeddings(model=MODEL)
 vectorstore = Chroma(persist_directory=CHROMA_PATH, embedding_function=embedding_function)
 query = QUESTION
 
-
-def rag_with_adaptive_retrieval(pdf_path, query, k=4, user_context=None):
+def rag_with_adaptive_retrieval(query, k=4, user_context=None):
     """
     Complete RAG pipeline with adaptive retrieval.
     
@@ -53,3 +51,6 @@ def rag_with_adaptive_retrieval(pdf_path, query, k=4, user_context=None):
     print(response)
     
     return result
+
+if __name__ == "__main__":
+    rag_with_adaptive_retrieval(query)

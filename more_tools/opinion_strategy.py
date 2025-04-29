@@ -4,11 +4,9 @@ sys.path.append(str(Path(__file__).parent.parent))
 
 import ollama
 from langchain_community.embeddings.ollama import OllamaEmbeddings
-from sentence_transformers import CrossEncoder
 from basic_tools.config import MODEL
 from more_tools import SimilarityMethods
 
-cross_encoder = CrossEncoder("cross-encoder/stsb-roberta-large")
 model="llama3"
 
 
@@ -49,7 +47,8 @@ def opinion_retrieval_strategy(query, k):
         # Combine the main query with the viewpoint
         combined_query = f"{query} {viewpoint}"
         # Create embeddings for the combined query
-        viewpoint_embedding = OllamaEmbeddings(combined_query, model=MODEL)
+        embedding_model = OllamaEmbeddings(model=MODEL)
+        viewpoint_embedding = embedding_model.embed_query(combined_query)
         # Perform similarity search for the combined query
         results = SimilarityMethods.opinion_similarity(viewpoint_embedding, k=k/2)
         

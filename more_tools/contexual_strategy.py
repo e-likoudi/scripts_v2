@@ -72,7 +72,8 @@ def contextual_retrieval_strategy(query, k, user_context=None):
     print(f"Contextualized query: {contextualized_query}")
     
     # Retrieve documents based on the contextualized query
-    query_embedding = OllamaEmbeddings(contextualized_query,model=MODEL)
+    embedding_model = OllamaEmbeddings(model=MODEL)
+    query_embedding = embedding_model.embed_query(contextualized_query)
     initial_results = SimilarityMethods.contexual_similarity(query_embedding, k=k*2)
     
     # Rank documents considering both relevance and user context

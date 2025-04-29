@@ -4,7 +4,6 @@ sys.path.append(str(Path(__file__).parent.parent))
 
 import ollama
 
-
 def generate_response(query, results, query_type, model="llama3"):
     """
     Generate a response based on query, retrieved documents, and query type.
@@ -82,4 +81,4 @@ def generate_response(query, results, query_type, model="llama3"):
     
     
     # Return the generated response content
-    return response.choices[0].message.content
+    return response['message']['content']
