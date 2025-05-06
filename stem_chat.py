@@ -2,15 +2,12 @@ import sys
 from pathlib import Path
 sys.path.append(str(Path(__file__).parent.parent))
 
-from langchain_community.vectorstores.chroma import Chroma
-from langchain_community.embeddings.ollama import OllamaEmbeddings
-from basic_tools.config import MODEL, CHROMA_PATH, QUESTION
+from basic_tools.config import QUESTION
 from more_tools.classify_query import classify_query
 from more_tools.response_generation import generate_response
 from more_tools.ar_core import adaptive_retrieval
+from protocol_tools.protocol import protocol
 
-embedding_function = OllamaEmbeddings(model=MODEL)
-vectorstore = Chroma(persist_directory=CHROMA_PATH, embedding_function=embedding_function)
 query = QUESTION
 
 def rag_with_adaptive_retrieval(query, k=4, user_context=None):
@@ -53,4 +50,5 @@ def rag_with_adaptive_retrieval(query, k=4, user_context=None):
     return result
 
 if __name__ == "__main__":
+    protocol()
     rag_with_adaptive_retrieval(query)

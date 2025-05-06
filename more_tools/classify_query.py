@@ -3,12 +3,7 @@ from pathlib import Path
 sys.path.append(str(Path(__file__).parent.parent))
 
 import ollama
-from langchain_community.vectorstores.chroma import Chroma
-from langchain_community.embeddings.ollama import OllamaEmbeddings
-from basic_tools.config import MODEL, CHROMA_PATH
 
-embedding_function = OllamaEmbeddings(model=MODEL)
-vectorstore = Chroma(persist_directory=CHROMA_PATH, embedding_function=embedding_function)
 model="llama3"
 
 def classify_query(query):

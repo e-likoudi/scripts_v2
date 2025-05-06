@@ -9,7 +9,6 @@ from more_tools import SimilarityMethods
 
 model="llama3"
 
-
 def opinion_retrieval_strategy(query, k):
     
     print(f"Executing Opinion retrieval strategy for: '{query}'")
