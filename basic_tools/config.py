@@ -3,7 +3,7 @@ MODEL = "nomic-embed-text"
 CHROMA_PATH = f"./{MODEL}_db"
 SUMMARIES_FILE = "/Users/chara/Documents/thesis/scripts_v2/medic_data/summaries.txt"
 
-PROTOCOL_MODEL = "mistral"
+PROTOCOL_MODEL = "gemma3:12b" 
 PROTOCOL_FILE = "/Users/chara/Documents/thesis/scripts_v2/medic_data/protocol.txt"
 
 BOOK_FOR_QA = "yang2008"

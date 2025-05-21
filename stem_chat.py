@@ -6,7 +6,6 @@ from basic_tools.config import QUESTION
 from more_tools.classify_query import classify_query
 from more_tools.response_generation import generate_response
 from more_tools.ar_core import adaptive_retrieval
-from protocol_tools.protocol import protocol
 
 query = QUESTION
 
@@ -50,5 +49,4 @@ def rag_with_adaptive_retrieval(query, k=4, user_context=None):
     return result
 
 if __name__ == "__main__":
-    protocol()
     rag_with_adaptive_retrieval(query)
