@@ -6,7 +6,7 @@ import ollama
 from basic_tools.config import PROTOCOL_MODEL
 
 
-def generate_summary(documents, cell_type):
+def generate_summary(documents):
             
     summaries = []
     
@@ -35,9 +35,11 @@ def generate_summary(documents, cell_type):
             options={"temperature": 0.1}
         )
         
-        summaries.append({
-            "cell_type": cell_type,
-            "text": response['message']['content'],
-        })
+        summaries = response['message']['content'].strip()
+
+        #summaries.append({
+        #    "cell_type": cell_type,
+        #    "text": response['message']['content'],
+        #})
     
     return summaries
