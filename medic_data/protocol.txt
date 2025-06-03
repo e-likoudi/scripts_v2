@@ -6,29 +6,247 @@ Here's the cell line identification from the provided document:
 
 **Relevant Details:**
 
-*   **General Description:** The document details a protocol for differentiating human embryonic stem cells into cardiovascular progenitor cells.
-*   **Differentiation Protocol:** The process involves staged differentiation using factors like activin A, BMP4, bFGF, VEGF, and DKK1 to direct the cells towards cardiac lineages.
-*   **Resulting Progenitor Population:** A key population resulting from the differentiation is the "KDR low/C-KIT (CD117)neg" population, which exhibits cardiac, endothelial, and vascular smooth muscle potential. This population is considered a human cardiovascular progenitor.
-*   **Notation:** The cell line is also referred to as "ESCs" throughout the document.
-
-
-
-
+*   The document details a protocol for directing the differentiation of these hESCs into cardiovascular progenitor cells.
+*   The differentiation process involves multiple stages and uses a combination of growth factors (Activin A, BMP4, bFGF, VEGF, DKK1) to influence the cell fate.
+*   A key population derived from these cells is the "KDR low/C-KITneg" population, which exhibits potential to differentiate into cardiac, endothelial, and vascular smooth muscle cells.
+*   These cells have the potential to form contracting cardiomyocytes and colonies containing all three lineages.
 
 Differentiation Steps:
 
-- Step 0: Undifferentiated Embryonic Stem Cells
-    - Duration: N/A
-    - Cells were voltage-clamped, stepped from -80 mV to +140 mV in 20 mV increments, followed by a -30 mV tail pulse. Data were analyzed using pClamp 9.1 software, normalizing current amplitudes to cell size.
+Step 0: Undifferentiated hESCs
+Duration: Not specified
+Human embryonic stem cells (hESCs) are the starting material for the differentiation protocol. These cells are pluripotent and have the potential to differentiate into various cell types. They represent the initial state before any differentiation stimuli are applied.
 
-- Step 1: Field Potential Recordings
-    - Duration: N/A
-    - Field potential recordings utilized a multi-electrode array (MEA) system, culturing cells in a specialized media supplemented with VEGF and DKK1.
+Step 1: Cardiovascular Progenitor Induction
+Duration: Not specified
+Human embryonic stem cells (hESCs) are induced to differentiate into cardiovascular progenitors by exposing them to a cocktail of growth factors, including activin A, bone morphogenetic protein 4 (BMP4), basic fibroblast growth factor (bFGF/FGF2), vascular endothelial growth factor (VEGF/VEGFA), and dickkopf homolog 1 (DKK1) in serum-free media. This results in the generation of a distinct cell population characterized by low KDR expression and negative C-KIT (CD117) expression. These cells exhibit the potential to differentiate into cardiac, endothelial, and vascular lineages.
 
-- Step 2: Extracellular Electrical Activity Recording
-    - Duration: N/A
-    - Extracellular electrical activity was recorded from 60 channels and analyzed using MC Rack software.
+Step 0: Undifferentiated Human Embryonic Stem Cells (hESCs)
+Duration: Not specified
+Prior to differentiation, the study utilized human embryonic stem cells (hESCs) as the starting material. The research aimed to direct these undifferentiated hESCs towards the cardiac lineage, focusing on identifying and characterizing early-stage cardiovascular progenitor cells.
 
-- Step 3: Determination of Specific Inactivation Time Constants
-    - Duration: N/A
-    - Specific inactivation time constants (τ values) were determined through exponential fitting of current decay.
+Step 1: Primitive Streak-like Population Generation
+Duration: Not specified
+A primitive-streak-like population was generated as the initial step in the differentiation protocol. This stage involved the use of activin A and BMP4 to promote cardiac development, leveraging their known roles in cardiac development in other systems. This initial signaling is crucial for establishing the foundation for subsequent cardiac differentiation.
+
+Step 2: Cardiac Mesoderm Induction and Specification
+Duration: Not specified
+Following the initial population generation, cardiac mesoderm was induced and specified. This step is critical for establishing the cardiac lineage and ensuring proper development of cardiac structures. The research aimed to define the signaling pathways involved in this crucial commitment step.
+
+Step 3: Cardiovascular Lineage Expansion
+Duration: Not specified
+The final identified step involved the expansion of cardiovascular lineages. This stage builds upon the prior specification of the cardiac mesoderm and promotes the growth and development of the cardiovascular cell types. The study identified a (CD117)neg population with multi-lineage potential during this stage.
+
+Step 0: Undifferentiated pluripotent stem cells
+    Duration: Not specified
+    The starting material consists of pluripotent stem cells, which will undergo a staged differentiation protocol to generate cardiac mesoderm. The protocol aims to mimic early mouse development to induce cardiac progenitor specification *in vitro*.
+
+Step 1: Primitive-streak-like induction
+    Duration: Not specified
+    This stage utilizes activin A and BMP4 to induce a primitive-streak-like population. The successful induction is confirmed by transient upregulation of *T* (brachyury) and *WNT3A*.
+
+Step 2: Cardiac mesoderm specification
+    Duration: Not specified
+    DKK1, a WNT inhibitor, is introduced in this stage to specify cardiac mesoderm. Alongside DKK1, VEGF is added to promote KDR1+ cell expansion. A final addition of bFGF at day 8 further supports cell expansion.
+
+Step 0: Undifferentiated hESCs
+Duration: Not specified
+Human embryonic stem cells (hESCs) are cultured as a starting point for the cardiac differentiation protocol. These cells are pluripotent and have the potential to differentiate into various cell types. The subsequent stages aim to guide these cells towards a cardiac lineage.
+
+Step 1: Mesoderm Induction
+Duration: Not specified
+hESCs are cultured in embryoid bodies (EBs) with BMP4, bFGF, and Activin A. This step is crucial for initiating mesoderm formation, a key precursor to cardiac cells. The combination of growth factors provides the initial signals to trigger the cells to commit to a mesodermal fate.
+
+Step 2: Cardiac Specification
+Duration: Not specified
+WNT signaling is modulated using WNT3A and DKK1 manipulation during this stage. This step aims to further refine the mesodermal cells towards a cardiac fate, utilizing WNT signaling pathway modulation to enhance cardiac differentiation. 
+
+Step 3: VEGF Stimulation
+Duration: Not specified
+VEGF is introduced at this stage to evaluate its effect on the number of cells expressing cardiac troponin T (CTNT1). This intervention is intended to further enhance cardiac cell generation and assess the role of VEGF in the differentiation process.
+
+Step 0: Undifferentiated hESCs
+    Duration: Not specified
+    Human embryonic stem cells (hESCs) are cultured as a starting point for cardiac differentiation. The research focuses on observing cardiac development from these undifferentiated cells, evidenced by the emergence of embryoid bodies and the expression of cardiac markers.
+
+Step 1: Cardiac Lineage Development
+    Duration: Day 14 (peak observed between days 14 and 16)
+    This step involves the induction of cardiac lineage development from hESCs. Researchers investigate the impact of varying concentrations of vascular endothelial growth factor (VEGF) on the generation of cardiac troponin T positive (CTNT1) cells. The process is linked to stage-specific WNT signaling inhibition, which is considered crucial for proper cardiac development.
+
+Step 0: Undifferentiated hESCs
+Duration: Not specified
+The summary begins by investigating cardiac lineage emergence from human embryonic stem cells (hESCs), implying a starting population of undifferentiated hESCs. These cells are the initial material for the differentiation process described in the subsequent steps.
+
+Step 1: Mesoderm Induction
+Duration: Not specified
+The initial step involves inducing a primitive streak population using BMP4/activin-A. This is a critical stage for mesoderm formation, a key precursor to cardiac cells. The researchers screened various factors and combinations to optimize this early induction phase, focusing on the generation of CTNT1 cells as an indicator of cardiac development.
+
+Step 0: Undifferentiated State
+Duration: Not specified
+Human embryonic stem cells (hESCs) were cultured as embryoid bodies (EBs) to initiate differentiation. The study aimed to investigate the molecular events during this differentiation process, with a specific focus on the emergence of cardiac lineages. Researchers planned to monitor gene expression patterns of key markers to understand the differentiation pathway.
+
+Step 1: Cardiac Mesoderm Induction
+Duration: Not specified
+Early in differentiation, the study observed upregulation of *DKK1*, *KDR*, and *ISL1*. This upregulation is indicative of the initial induction of cardiac mesoderm, a crucial early step in the differentiation towards cardiac lineages. The researchers used these markers to track the progression of the differentiation process.
+
+Step 2: Cardiac Progenitor Specification
+Duration: Days 8-10
+Between days 8 and 10 of differentiation, researchers observed upregulation of cardiac-specific transcription factors and contractile proteins, following *ISL1* expression. They also noted the appearance of *NKX2.5*, further indicating the specification of cardiac progenitors. This stage marks a commitment towards a cardiac fate.
+
+Step 0: Undifferentiated ESCs
+Duration: Not specified
+This summary begins with embryonic stem cells (ESCs) in an undifferentiated state. The subsequent differentiation process will be induced using BMP4 and activin A to generate three distinct cell populations, which will then be characterized based on their expression of various markers.
+
+Step 1: Mesoderm Induction
+Duration: 6 days
+The summary describes the initial induction of mesoderm, evidenced by the use of BMP4 and activin A. This induction leads to the emergence of three distinct populations (III, I, and II) characterized by unique expression profiles of surface markers KDR and C-KIT, alongside genes involved in vascular, hematopoietic, cardiac, primitive streak, and endoderm development. The differentiation is assessed at 6 days.
+
+Step 0: Undifferentiated State
+Duration: Not specified
+Embryoid bodies (EBs) are formed from specific cell populations. These EBs contain cells with varying differentiation potentials, which are tracked using flow cytometric analysis to monitor the dynamic expression of KDR and C-KIT. The initial cell population is heterogeneous, containing cells that will eventually give rise to different lineages.
+
+Step 1: Cardiac Mesoderm Specification
+Duration: 7-10 days
+The KDRlow/C-KITneg (I) population within the EBs is identified as exhibiting high cardiac differentiation capacity. These cells are cultured in suspension aggregates and adherent monolayers for 7-10 days. During this period, approximately 40% of aggregates and over 50% of monolayers differentiate into CTNT1-positive cardiomyocytes, demonstrating cardiac lineage commitment. This stage is characterized by the emergence of cardiomyocytes expressing the CTNT1 marker.
+
+Step 0: Undifferentiated State
+Duration: Not specified
+The summary begins with day-6 embryoid bodies, indicating a state where cells are derived from earlier embryonic stem cells and have begun to form early structures, but are not yet committed to a specific lineage. These cells are being separated into distinct populations based on KDR and C-KIT expression, suggesting heterogeneity within the embryoid body stage.
+
+Step 1: Cardiac Mesoderm Induction
+Duration: 7-10 days
+The three isolated cell populations (KDRhigh/C-KIT1, KDRlow/C-KITneg, and KDRneg/C-KIT1) are cultured as monolayers and aggregates in low-cluster wells. The culture media is supplemented with VEGF, DKK1, and bFGF to induce cardiac differentiation. CTNT1 cell frequency, a marker of cardiac differentiation, is assessed at 7-10 days, suggesting a timeframe for the induction and initial differentiation towards a cardiac fate.
+
+Step 0: Undifferentiated hESCs
+    Duration: Not specified
+    Human embryonic stem cells (hESCs) are the starting material for cardiomyocyte differentiation. The goal is to induce these cells to differentiate into cardiomyocytes, with an emphasis on characterizing the resulting cell populations and assessing their gene expression profiles.
+
+Step 1: Embryoid Body Formation
+    Duration: Not specified
+    Differentiation is initiated by inducing the hESCs to form embryoid bodies (EBs). This early stage represents the initial commitment away from the undifferentiated state and towards multiple lineages.
+
+Step 2: KDRlow/C-KITneg Cell Isolation
+    Duration: Not specified
+    A subset of cells, identified as KDRlow/C-KITneg, are isolated from the embryoid bodies. These cells are then cultured, demonstrating expansion in both aggregate and monolayer formats. This isolation step likely enriches for cells with a specific developmental potential.
+
+Step 0: Undifferentiated cells
+    Duration: Not specified
+    KDRlow/C-KITneg-derived cells are cultured in vitro to serve as the starting population for differentiation. These cells represent an early stage, prior to any directed lineage commitment.
+
+Step 1: Endothelial/Mesenchymal Lineage Specification
+    Duration: 10-12 days
+    KDRlow/C-KITneg-derived cells are cultured for 10-12 days in media supplemented with VEGF and DKK1. This initial culture period appears to induce a mixed population of endothelial and mesenchymal lineages, as evidenced by the expression of SMA, CTNT, and CD31. The specific roles of VEGF and DKK1 in guiding this initial specification are under investigation.
+
+Step 2: Modulation of Differentiation with bFGF
+    Duration: Not specified
+    Following the initial culture period, bFGF is added to a subset of cultures. This addition modulates the differentiation trajectory, reducing cardiomyocyte (CTNT) and vascular smooth muscle (SMA) expression while increasing endothelial (CD31) expression. This suggests a shift away from mesodermal lineages towards an endothelial fate.
+
+Step 0: Undifferentiated Cells
+Duration: Not specified
+The starting material for this study are KDRlow/C-KITneg-derived cells, originating from a GFP-expressing hES2 cell line. These cells possess the potential to differentiate into cardiac, endothelial, and vascular smooth muscle lineages. They are characterized initially *in vitro* via assessment of CD31 expression and Dil-AC-LDL uptake to confirm an endothelial phenotype.
+
+
+
+Step 1: Lineage Commitment - Cardiac, Endothelial, and Vascular Smooth Muscle Differentiation
+Duration: Two weeks (post-transplantation)
+KDRlow/C-KITneg-derived cells were transplanted into NOD/SCID and infarcted SCID beige mice. Following transplantation, donor cells were observed within the grafts, demonstrating co-expression of α-actinin (cardiac), CD31 (endothelial), and SMHC (vascular smooth muscle), indicating differentiation into cardiac, endothelial, and vascular smooth muscle lineages. This differentiation occurred *in vivo* within the recipient mice.
+
+Step 0: Undifferentiated State
+Duration: Not specified
+The summary describes KDRlow/C-KITneg-derived cardiovascular progenitor cells as the starting material. These cells possess differentiation potential and are being characterized to understand how specific growth factors influence their differentiation.
+
+Step 1: Cardiovascular Progenitor Cell Differentiation
+Duration: 10-12 days
+KDRlow/C-KITneg cells are cultured with a cocktail of VEGF (10 ng/ml), DKK1 (150 ng/ml), and bFGF (10 ng/ml) to induce differentiation. Gene expression is monitored using qRT-PCR at various time points (D7, D8, D10, D14, D18, D22). Flow cytometry and immunostaining are performed after 10-12 days to analyze differentiation and characterize the resulting lineages, with bFGF observed to influence the process.
+
+Step 1: Cardiac and Vascular Lineage Induction
+Duration: Not specified
+KDRlow/C-KITneg cells are cultured *in vitro* in the presence of VEGF, DKK1, and bFGF to induce differentiation towards both cardiac and vascular lineages. The success of this stage is assessed through immunostaining for cardiac troponin T (CTNT) and smooth muscle actin (SMA) to identify developing cardiac and vascular smooth muscle cells, respectively. This demonstrates the initial commitment of the cells towards these lineages.
+
+Step 0: Undifferentiated ESCs
+    Duration: Not specified
+    Mouse Embryonic Stem Cells (ESCs) are used as the starting material for the differentiation process. The research focuses on cells derived from these ESCs that exhibit low KDR and negative C-KIT expression. These cells will be further assessed for their potential to differentiate into cardiac, endothelial, and vascular smooth muscle lineages.
+
+Step 1: Colony Formation
+    Duration: 4 days
+    KDRlow/C-KITneg-derived cells are plated in methylcellulose culture to allow for colony formation. Over a period of four days, small, compact colonies are observed. These colonies serve as the basis for subsequent analysis of lineage marker expression.
+
+Step 0: Undifferentiated hESC culture
+Duration: Not specified
+Human embryonic stem cell (hESC) cultures are maintained in an undifferentiated state. The research focuses on differentiating these cells into cardiovascular progenitors, highlighting the need to identify subpopulations with specific potential. The initial condition involves culturing these cells to allow for subsequent differentiation protocols.
+
+Step 1: Cardiovascular Progenitor Specification
+Duration: Not specified
+The hESCs are treated with bFGF and WNT3A to induce the specification of cardiovascular progenitors. This treatment leads to the identification of a distinct KDRlow/C-KITneg population, which demonstrates early hematopoietic and cardiac potential. The use of DKK1 is also noted, likely to fine-tune the differentiation process and further isolate the desired progenitor population.
+
+Step 0: Undifferentiated ESCs
+    Duration: Not specified
+    Initially, human embryonic stem cells (ESCs) expressing either RFP or GFP are cultured in mixed cultures. These cells represent the starting population before any differentiation is induced.
+
+Step 1: Cardiovascular Progenitor Isolation
+    Duration: Day 4
+    Following 4 days of culture, colonies are isolated. Immunostaining with various markers (SMA, CTNT, VE-cad, DAPI, RFP, GFP, KDR, CD31, VE-cad, ISL1, Calponin, TBX5, CTNT, ACTB) is performed to identify and characterize these colonies, assessing their expression of cardiovascular markers. A cell-dose response experiment involving plating KDRlow/C-KITneg cells is performed to determine the optimal cell seeding density for colony formation.
+
+Step 0: Undifferentiated hESCs
+Duration: Not specified
+Human embryonic stem cells (hESCs) were maintained in culture as an undifferentiated population before any differentiation protocol was initiated. The goal of the subsequent differentiation process was to guide these cells towards a cardiac lineage.
+
+Step 1: Cardiac Lineage Induction
+Duration: 8 days
+hESC lines were differentiated towards a cardiac lineage using a cytokine cocktail consisting of BMP4, bFGF, activin A, DKK1, and VEGF. These cytokines were administered at varying concentrations and durations over an 8-day period to initiate the differentiation process and direct the hESCs towards a cardiac fate.
+
+Step 2: Cardiovascular Progenitor Isolation
+Duration: Not specified
+Following the initial cytokine treatment, a specific population of cells, characterized as KDRlow/C-KITneg, were isolated. This isolation step aims to enrich for cardiovascular progenitor cells (hCV-CFC) emerging during the differentiation process. These isolated cells were then cultured for further analysis.
+
+Step 0: Undifferentiated Cells
+Duration: Not specified
+KDRlow/C-KITneg cells are the starting population being investigated for their differentiation potential. These cells are cultured in vitro as monolayers or aggregates, indicating they are in an undifferentiated state prior to any directed differentiation protocol.
+
+Step 1: Endothelial Lineage Induction
+Duration: Not specified
+The cells are cultured in vitro utilizing Stempro34 medium supplemented with varying concentrations of VEGF, DKK1, and bFGF to promote endothelial development. This step is crucial for directing the cells towards an endothelial fate, representing a key lineage commitment. The varying concentrations of growth factors suggest optimization of the differentiation conditions.
+
+Step 0: Undifferentiated State
+Duration: Not specified
+Flk-1+ cardiovascular progenitor cells are multipotent and serve as the starting material for the differentiation process. These cells have the potential to differentiate into cardiomyocytes, endothelial cells, and vascular smooth muscle cells, demonstrating their undifferentiated state prior to any directed lineage commitment.
+
+Step 1: Mesoderm Formation and Cardiac Development
+Duration: Not specified
+This stage focuses on the initial steps of mesoderm formation and subsequent cardiac development. The researchers investigate the roles of Nodal, BMP-2/FGF-4, Wnt signaling, FGF receptor, Wnt antagonism, and BMP-4. The study utilizes in vivo studies in mice, Xenopus laevis, and human embryonic stem cell (hESC)-derived cardiomyocytes to examine the impact of manipulating these signaling pathways and genetic factors.
+
+Step 0: Undifferentiated hESC state
+Duration: Not specified
+Human embryonic stem cell (hESC) lines, specifically H1 and hES2, were maintained under established protocols. These lines represent the undifferentiated starting material for subsequent differentiation experiments. The initial goal was to generate targeted hESC lines (AAVS1-targeted hES2 and RFP-expressing hES2) from these undifferentiated hESCs.
+
+Step 0: Undifferentiated hESCs
+Duration: Not specified
+Human embryonic stem cells (hESCs) are the starting material for the differentiation process. These cells exist as aggregates and are poised to be induced towards mesodermal and cardiac lineages.
+
+Step 1: Embryoid Body (EB) Formation and Early Mesoderm Induction
+Duration: Days 1-4
+Initially, hESC aggregates are plated in StemPro34 media supplemented with ascorbic acid, monothioglycerol, and BMP4 to form embryoid bodies (EBs). This stage is crucial for initiating differentiation, as it provides a three-dimensional environment conducive to early mesodermal development. The culture conditions are maintained under 5% CO2/5% O2 during this period.
+
+Step 2: Cardiac Mesoderm Specification
+Duration: Days 4-8
+Following the initial EB formation, the differentiation protocol continues with the sequential addition of growth factors to specify cardiac mesoderm. During days 4-8, the media is supplemented with VEGF and DKK1, guiding the EBs towards a cardiac fate.
+
+Step 3: Cardiac Progenitor Expansion and Maturation
+Duration: Post-day 12
+To promote further differentiation and maturation of cardiac cells, the culture is supplemented with VEGF, DKK1, and bFGF post-day 12. This stage aims to expand the population of cardiac progenitor cells and drive their maturation into more specialized cardiac cells.
+
+Step 0: Undifferentiated Cells
+Duration: Not specified
+This summary begins with a population of KDRlow/C-KITneg cells, representing an undifferentiated state prior to any lineage commitment. The investigation aims to assess their potential to differentiate into cardiac and endothelial lineages.
+
+Step 1: Cardiac Differentiation
+Duration: Not specified
+Cardiac differentiation is induced by culturing the cells in Stempro34 medium supplemented with VEGF (10 ng/ml) and DKK1 (150 ng/ml). The cells are seeded at a density of 40,000-50,000 cells/well. This stage focuses on directing the cells towards a cardiac fate through the addition of specific growth factors.
+
+Step 2: Endothelial Differentiation
+Duration: 5-7 days + 24 hours
+Endothelial development is promoted using Stempro34 medium with VEGF (25 ng/ml) and bFGF (25 ng/ml) for 5-7 days. Following this initial culture period, the cells are transferred to Matrigel-coated coverslips for an additional 24 hours to induce the formation of tube-like structures, a hallmark of endothelial differentiation.
+
+Step 1: Early Mesoderm Specification/Vascular Progenitor Enrichment
+Duration: 4-6 days
+This step focuses on enriching a specific population of cells – KDRlow/C-KITneg cells derived from embryoid bodies – and assessing their differentiation potential. The cells are aggregated and cultured in methylcellulose media with VEGF, bFGF, and DKK1 under controlled atmospheric conditions (5% CO2, 5% O2, 90% N2) for 4-6 days. This combination of factors likely promotes early mesodermal specification and/or the enrichment of vascular progenitor cells, as evidenced by colony formation and subsequent gene expression analysis.

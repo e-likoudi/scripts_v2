@@ -4,7 +4,7 @@ from langchain.schema.document import Document
 from langchain_community.document_loaders import PyPDFDirectoryLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.embeddings.ollama import OllamaEmbeddings
-from basic_tools.config import BOOKS_PATH, MODEL, CHROMA_PATH
+from config import BOOKS_PATH, MODEL, CHROMA_PATH
 
 client = chromadb.PersistentClient(CHROMA_PATH)
 

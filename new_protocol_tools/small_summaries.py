@@ -5,7 +5,6 @@ sys.path.append(str(Path(__file__).parent.parent))
 import ollama
 from basic_tools.config import PROTOCOL_MODEL
 
-
 def generate_summary(documents):
             
     summaries = []
@@ -35,11 +34,6 @@ def generate_summary(documents):
             options={"temperature": 0.1}
         )
         
-        summaries = response['message']['content'].strip()
-
-        #summaries.append({
-        #    "cell_type": cell_type,
-        #    "text": response['message']['content'],
-        #})
+        summaries.append(response['message']['content'].strip())
     
     return summaries

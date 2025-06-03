@@ -23,6 +23,21 @@ def get_documents_from_chroma():
 
     return documents
 
+def summaries_for_steps(summaries_list):
+
+    steps = []
+    step_index = 0
+
+    for summary in summaries_list:
+        result = differentiation_steps([summary])
+        if "No differentiation step" not in result:
+            # Αντικαθιστά το "Step X" με τον σωστό αριθμό
+            formatted_result = result.replace("Step X", f"Step {step_index}")
+            steps.append(formatted_result)
+            step_index += 1
+
+    return steps
+
 def save_final_report(cell_line, steps):
     with open(PROTOCOL_FILE, 'w', encoding='utf-8') as f:
         f.write("Identified Cell Line:\n\n")
@@ -38,10 +53,12 @@ def protocol():
     cell_line = identify_cell_line(docs_for_cell_line)
 
     summaries_list = generate_summary(documents)
-    steps = differentiation_steps(summaries_list)
+    print(f"Generated {len(summaries_list)} summaries")
 
-    save_final_report(cell_line, steps)
+    steps = summaries_for_steps(summaries_list)
+    formatted_steps = "\n\n".join(steps)
 
+    save_final_report(cell_line, formatted_steps)
 
 if __name__ == "__main__":
     protocol()
