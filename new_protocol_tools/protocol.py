@@ -42,7 +42,7 @@ def summaries_for_steps(summaries_list):
 
 def save_final_report(cell_line, steps):
     with open(PROTOCOL_FILE, 'w', encoding='utf-8') as f:
-        f.write("Identified Cell Line:\n\n")
+        f.write("Identified Cell Line and Differentiation Target:\n\n")
         f.write(cell_line)
         f.write("\n\nDifferentiation Steps:\n\n")
         f.write(steps)

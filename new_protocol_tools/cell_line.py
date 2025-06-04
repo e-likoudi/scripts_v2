@@ -9,8 +9,8 @@ from basic_tools.config import PROTOCOL_MODEL
 def identify_cell_line(documents):  
     prompt_template = """
     You are an expert in cell line identification.
-    Given the following documents, identify the cell line mentioned in each document.
-    Provide the cell line name and any relevant details.
+    Given the following documents, identify the cell line and the differentiation target mentioned in each document.
+    Provide the cell line name and the differentiation targetname without any more details.
     Documents:
     {documents}
     """

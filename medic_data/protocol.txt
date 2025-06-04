@@ -1,29 +1,4 @@
 Identified Cell Line:
 
-Here's the cell line identification from the provided document:
-
-**Cell Line:** Human Embryonic Stem Cells (hESCs)
-
-**Relevant Details:**
-
-*   The document details a protocol for differentiating these hESCs into cardiovascular progenitor cells.
-*   The differentiation process involves a staged approach using various growth factors like activin A, BMP4, bFGF, VEGF, and DKK1.
-*   A key population generated during differentiation is the "KDR low/C-KITneg" population, which exhibits cardiac, endothelial, and vascular smooth muscle potential. These cells are derived from the hESCs.
-
-
-
-
-
-Differentiation Steps:
-
-Step 0: Undifferentiated hESCs
-Duration: Not specified
-This protocol begins with human embryonic stem cells (hESCs), representing an undifferentiated state. These cells are the starting material prior to any differentiation process. All technical details and concentrations are preserved throughout the subsequent steps. The protocol ensures the maintenance of chronological order and aims to eliminate any redundant information while keeping the description concise and under 100 words.
-
-Step 1: Cardiovascular Progenitor Induction
-Duration: Not specified
-Human embryonic stem cells are induced to differentiate into cardiovascular progenitor cells using a serum-free media cocktail containing activin, BMP4, bFGF/FGF2, VEGF/VEGFA, and DKK1. This process yields a population of cells characterized by low KDR expression and negative C-KIT (CD117) expression, demonstrating their potential to differentiate into cardiac, endothelial, and vascular lineages.
-
-Step 3: Cardiac Maturation
-Duration: Not specified
-Cardiac maturation is assessed by characterizing the functional properties of derived cardiomyocytes. Electrophysiological properties are evaluated, including the presence of a transient outward potassium current (Ito), electrical cell coupling, and response to a Vaughan Williams Class-I agent (quinidine). These assessments are performed to align cardiomyocyte characteristics with established cardiac myocytes and identify their lineage potential, ensuring derived cells meet functional benchmarks.
+Human embryonic stem cells
+Cardiomyocytes, endothelial cells, vascular smooth muscle cells
