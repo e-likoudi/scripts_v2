@@ -9,6 +9,9 @@ from langchain_community.embeddings.ollama import OllamaEmbeddings
 from new_protocol_tools.cell_line import identify_cell_line
 from new_protocol_tools.diff_steps import differentiation_steps
 from new_protocol_tools.small_summaries import generate_summary
+from new_protocol_tools.sort_steps import sorted_steps
+from new_protocol_tools.merge_steps import merge_similar_steps
+from new_protocol_tools.refine_desc import refine_with_prompt
 from basic_tools.config import CHROMA_PATH, BOOK_FOR_QA, PROTOCOL_MODEL, MODEL, PROTOCOL_FILE
 
 def get_documents_from_chroma():
@@ -31,7 +34,6 @@ def summaries_for_steps(summaries_list):
     for summary in summaries_list:
         result = differentiation_steps([summary])
         if "No differentiation step" not in result:
-            # Αντικαθιστά το "Step X" με τον σωστό αριθμό
             formatted_result = result.replace("Step X", f"Step {step_index}")
             steps.append(formatted_result)
             step_index += 1
@@ -56,9 +58,11 @@ def protocol():
     print(f"Generated {len(summaries_list)} summaries")
 
     steps = summaries_for_steps(summaries_list)
-    formatted_steps = "\n\n".join(steps)
+    sort_steps = sorted_steps(steps)
+    merge_steps = merge_similar_steps(sort_steps)
+    refine_desc = refine_with_prompt(merge_steps)
 
-    save_final_report(cell_line, formatted_steps)
+    save_final_report(cell_line, refine_desc)
 
 if __name__ == "__main__":
     protocol()
