@@ -7,7 +7,7 @@ from langchain.schema import Document
 from langchain_community.vectorstores.chroma import Chroma
 from langchain_community.embeddings.ollama import OllamaEmbeddings
 from new_protocol_tools.cell_line import identify_cell_line
-from new_protocol_tools.diff_steps import differentiation_steps
+from new_protocol_tools.differentiation import differentiation_stage
 from new_protocol_tools.small_summaries import generate_summary
 from new_protocol_tools.sort_steps import sorted_steps
 from new_protocol_tools.merge_steps import merge_similar_steps
@@ -32,7 +32,7 @@ def summaries_for_steps(summaries_list):
     step_index = 0
 
     for summary in summaries_list:
-        result = differentiation_steps([summary])
+        result = differentiation_stage([summary])
         if "No differentiation step" not in result:
             formatted_result = result.replace("Step X", f"Step {step_index}")
             steps.append(formatted_result)
@@ -58,11 +58,12 @@ def protocol():
     print(f"Generated {len(summaries_list)} summaries")
 
     steps = summaries_for_steps(summaries_list)
-    sort_steps = sorted_steps(steps)
-    merge_steps = merge_similar_steps(sort_steps)
-    refine_desc = refine_with_prompt(merge_steps)
+    #sort_steps = sorted_steps(steps)
+    #merge_steps = merge_similar_steps(sort_steps)
+    #refine_desc = refine_with_prompt(merge_steps)
+    steps = "\n\n".join(steps)  # Join all steps into a single string
 
-    save_final_report(cell_line, refine_desc)
+    save_final_report(cell_line, steps)
 
 if __name__ == "__main__":
     protocol()
