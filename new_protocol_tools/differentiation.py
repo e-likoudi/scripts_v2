@@ -29,7 +29,7 @@ def differentiation_stage(summary):
     - Respond concisely using the following format:  
 
         "stage": "[Undifferentiated cells/Differentiation Process/Differentiated cells/No differentiation step]",  
-        "reason": "Brief explanation",  
+        "reason": "One paragraph describing the procedure in that stage",  
         "specific_step": "[Optional: lineage specification if applicable]"  
     
     Input Summary to Analyze:
