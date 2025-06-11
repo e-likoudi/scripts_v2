@@ -2,17 +2,16 @@ import sys
 from pathlib import Path
 sys.path.append(str(Path(__file__).parent.parent))
 
-import ollama
 from langchain.schema import Document
 from langchain_community.vectorstores.chroma import Chroma
 from langchain_community.embeddings.ollama import OllamaEmbeddings
 from new_protocol_tools.cell_line import identify_cell_line
 from new_protocol_tools.differentiation import differentiation_stage
 from new_protocol_tools.small_summaries import generate_summary
-from new_protocol_tools.sort_steps import sorted_steps
-from new_protocol_tools.merge_steps import merge_similar_steps
-from new_protocol_tools.refine_desc import refine_with_prompt
-from basic_tools.config import CHROMA_PATH, BOOK_FOR_QA, PROTOCOL_MODEL, MODEL, PROTOCOL_FILE
+from new_protocol_tools.sort_stages import process_stages
+from new_protocol_tools.merge_stages import merge_similar_steps
+from new_protocol_tools.refine_desc import create_protocol, format_protocol_steps
+from basic_tools.config import CHROMA_PATH, BOOK_FOR_QA, MODEL, PROTOCOL_FILE
 
 def get_documents_from_chroma():
     embedding_function = OllamaEmbeddings(model=MODEL)
@@ -29,23 +28,23 @@ def get_documents_from_chroma():
 def summaries_for_steps(summaries_list):
 
     steps = []
-    step_index = 0
 
     for summary in summaries_list:
         result = differentiation_stage([summary])
-        if "No differentiation step" not in result:
-            formatted_result = result.replace("Step X", f"Step {step_index}")
-            steps.append(formatted_result)
-            step_index += 1
-
+        stage_name, stage_data = next(iter(result.items()))
+        steps.append({
+            'stage': stage_name,
+            'reason': stage_data.get('reason', ''),
+            'specific_step': stage_data.get('specific_step', '')
+        })
     return steps
 
-def save_final_report(cell_line, steps):
+def save_final_report(cell_line, protocol_result):
     with open(PROTOCOL_FILE, 'w', encoding='utf-8') as f:
         f.write("Identified Cell Line and Differentiation Target:\n\n")
         f.write(cell_line)
-        f.write("\n\nDifferentiation Steps:\n\n")
-        f.write(steps)
+        f.write("\n\nDifferentiation Protocol:\n\n")
+        f.write(protocol_result)
             
     print(f"Report saved to {PROTOCOL_FILE}")
     
@@ -58,12 +57,18 @@ def protocol():
     print(f"Generated {len(summaries_list)} summaries")
 
     steps = summaries_for_steps(summaries_list)
-    #sort_steps = sorted_steps(steps)
+    sort_steps = process_stages(steps)
+    print(f"Processed {len(sort_steps)} stages")
+    
     #merge_steps = merge_similar_steps(sort_steps)
-    #refine_desc = refine_with_prompt(merge_steps)
-    steps = "\n\n".join(steps)  # Join all steps into a single string
+    #print(f"Merged into {len(merge_steps)} steps") -> Merged into 1 steps
+    
+    protocol_steps = create_protocol(sort_steps)
+    print(f"Created {len(protocol_steps)} protocol steps")
+    
+    #protocol_result = format_protocol_steps(protocol_steps)
 
-    save_final_report(cell_line, steps)
+    save_final_report(cell_line, protocol_steps) 
 
 if __name__ == "__main__":
     protocol()

@@ -42,12 +42,13 @@ def differentiation_stage(summary):
     model = Ollama(model=PROTOCOL_MODEL)
     result = model.invoke(prompt)
 
-    return result.strip()
-
-#def differentiation_steps(stages):
-#Step X: [Name of the differentiation stage]  
-#Duration: [State the duration if available, else write 'Not specified']  
-#[One paragraph describing the procedure in that stage]
-
-#    - Step 0 must describe the condition of the undifferentiated cells before any differentiation starts.
-
+    data = {}
+    stage = "No differentiation step"
+    for line in result.splitlines():
+        if line.startswith("stage:"):
+            stage = line.split(":", 1)[1].strip()
+        elif line.startswith("reason:"):
+            data["reason"] = line.split(":", 1)[1].strip()
+        elif line.startswith("specific_step:"):
+            data["specific_step"] = line.split(":", 1)[1].strip()
+    return {stage: data}

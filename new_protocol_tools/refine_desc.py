@@ -2,46 +2,40 @@ import sys
 from pathlib import Path
 sys.path.append(str(Path(__file__).parent.parent))
 
-import ollama
+from langchain_community.llms.ollama import Ollama
 from basic_tools.config import PROTOCOL_MODEL
 
-def refine_with_prompt(steps_data):
-    refined_steps = []
+def format_protocol_steps(protocol_steps):
+    if not protocol_steps:
+        return "No protocol steps available"
     
-    for step in steps_data:
-        prompt = f"""
-        Combine these protocol descriptions into one cohesive paragraph:
-        
-        Step {step['step_num']}: {step['name']}
-        
-        Input Descriptions:
-        {chr(10).join(step['description'])}
-        
-        Requirements:
-        1. Preserve all technical details (concentrations, durations)
-        2. Remove redundant information
-        3. Maintain chronological order
-        4. Keep under 100 words
-        5. Use passive voice for protocols
-        """
-        
-        response = ollama.chat(
-            model=PROTOCOL_MODEL,  
-            messages=[{'role': 'user', 'content': prompt}],
-            options={'temperature': 0}
-        )
-        
-        refined_steps.append({
-            **step,
-            'refined_description': response['message']['content'].strip()
-        })
+    output_lines = []
+    for step in protocol_steps:
+        output_lines.append(f"Step {step['step_num']}: {step['name']}")
+        output_lines.append(f"Description: {step['description']}")
+        output_lines.append("")  
     
-    refined_desc = '\n\n'.join(
-        f"Step {s['step_num']}: {s['name']}\n"
-        f"Duration: Not specified\n"
-        f"{s['refined_description']}" 
-        for s in refined_steps
-    )
+    return "\n".join(output_lines).strip()
 
-    return refined_desc.strip() if refined_desc else "No valid steps found."
+def create_protocol(merged_stages):
+    prompt = """
+    You are an expert in biological protocols.
+    You are given the stages of a differentiation protocol, a description and the step they refer to.
+    Refine the information to create a clear and concise protocol.
 
+    Rules:
+    - Step 0 must describe the condition of the undifferentiated cells before any differentiation starts.
+    - Steps 1 through n must describe the differentiation process, including any specific signals, medium changes, or lineage-commitment steps.
+    - Last step must describe the final differentiated state of the cells, including any markers or characteristics that define this state.
+    - Each step should be clearly numbered and formatted.
+
+    Input stages:
+    {stages}
+    """
+
+    formatted_prompt = prompt.format(stages=merged_stages)
+
+    model = Ollama(model=PROTOCOL_MODEL)
+    response = model.invoke(formatted_prompt)
+
+    return response
