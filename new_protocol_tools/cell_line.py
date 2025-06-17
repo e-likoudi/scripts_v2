@@ -1,10 +1,5 @@
-import sys
-from pathlib import Path
-sys.path.append(str(Path(__file__).parent.parent))
-
 from langchain_community.llms.ollama import Ollama 
 from langchain.prompts import ChatPromptTemplate
-from basic_tools.config import PROTOCOL_MODEL
 
 def identify_cell_line(documents):  
     prompt_template = """
@@ -19,7 +14,7 @@ def identify_cell_line(documents):
     prompt_template = ChatPromptTemplate.from_template(prompt_template)
     prompt = prompt_template.format(documents=formatted_docs)
 
-    model = Ollama(model=PROTOCOL_MODEL)
+    model = Ollama(model="gemma3:12b")
     response = model.invoke(prompt)
 
     return response

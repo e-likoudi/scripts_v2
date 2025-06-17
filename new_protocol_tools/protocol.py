@@ -9,8 +9,9 @@ from new_protocol_tools.cell_line import identify_cell_line
 from new_protocol_tools.differentiation import differentiation_stage
 from new_protocol_tools.small_summaries import generate_summary
 from new_protocol_tools.sort_stages import process_stages
+from new_protocol_tools.durations import calculate_durations
 from new_protocol_tools.merge_stages import merge_similar_steps
-from new_protocol_tools.refine_desc import create_protocol, format_protocol_steps
+from new_protocol_tools.refine_desc import create_protocol
 from basic_tools.config import CHROMA_PATH, BOOK_FOR_QA, MODEL, PROTOCOL_FILE
 
 def get_documents_from_chroma():
@@ -53,21 +54,21 @@ def protocol():
     docs_for_cell_line = documents[:5]  # Use the first 5 documents for cell line identification
     cell_line = identify_cell_line(docs_for_cell_line)
 
-    summaries_list = generate_summary(documents)
+    summaries_list = generate_summary(documents)    # generate summaries for all documents
     print(f"Generated {len(summaries_list)} summaries")
 
-    steps = summaries_for_steps(summaries_list)
-    sort_steps = process_stages(steps)
+    steps = summaries_for_steps(summaries_list)     # Classify summaries into differentiation stages
+    sort_steps = process_stages(steps)          # Sort by stage
     print(f"Processed {len(sort_steps)} stages")
+    print(f"Sorted steps sample: {sort_steps[:3]}")  # Print first 3 sorted steps for verification
+
+    durations = calculate_durations(sort_steps)
+    print(f"Calculated durations for {len(durations)} steps")
+    print(f"Durations sample: {durations[:3]}")  # Print first 3 durations for verification
     
-    #merge_steps = merge_similar_steps(sort_steps)
-    #print(f"Merged into {len(merge_steps)} steps") -> Merged into 1 steps
-    
-    protocol_steps = create_protocol(sort_steps)
+    protocol_steps = create_protocol(sort_steps, cell_line)
     print(f"Created {len(protocol_steps)} protocol steps")
     
-    #protocol_result = format_protocol_steps(protocol_steps)
-
     save_final_report(cell_line, protocol_steps) 
 
 if __name__ == "__main__":

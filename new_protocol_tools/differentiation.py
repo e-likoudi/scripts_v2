@@ -4,7 +4,6 @@ sys.path.append(str(Path(__file__).parent.parent))
 
 from langchain_community.llms.ollama import Ollama 
 from langchain.prompts import ChatPromptTemplate
-from basic_tools.config import PROTOCOL_MODEL
 
 def differentiation_stage(summary):  
     prompt_template = """
@@ -39,7 +38,7 @@ def differentiation_stage(summary):
 
     prompt_template = ChatPromptTemplate.from_template(prompt_template)
     prompt = prompt_template.format(summary=summary)
-    model = Ollama(model=PROTOCOL_MODEL)
+    model = Ollama(model="llama3.1:latest")
     result = model.invoke(prompt)
 
     data = {}

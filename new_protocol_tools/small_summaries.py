@@ -31,7 +31,7 @@ def generate_summary(documents):
         response = ollama.chat(
             model=PROTOCOL_MODEL,
             messages=[{"role": "user", "content": summary_prompt}],
-            options={"temperature": 0.1}
+            options={"temperature": 0}
         )
         
         summaries.append(response['message']['content'].strip())
