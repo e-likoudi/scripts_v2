@@ -36,18 +36,17 @@ map_chain = load_summarize_chain(llm=llm3,
 
 
 combine_prompt = """
-Synthesize the following academic paper summaries into a cohesive, professional overview. Prioritize technical accuracy and logical flow.
-
+You are an expert research assistant. Summarize the following academic paper section with precision, focusing on objectives, methods, and findings. 
+Maintain a formal tone.
+        
 Summaries: {text}
 
-Final Summary Structure:
-- Title/Authors: [If available]
-- Objectives: [Research goals]
-- Methods: [Aggregated techniques]
-- Key Results: [Consolidated findings]
-- Implications: [Broader impact]
+=== REQUIREMENTS ===
+    1. Extract key steps in chronological order
+    2. Identify all critical components
+    3. Note any special conditions
+    4. Keep under 200 words
 
-FINAL ACADEMIC SUMMARY:
 """
 combine_prompt_template = PromptTemplate(template=combine_prompt, input_variables=["text"])
 

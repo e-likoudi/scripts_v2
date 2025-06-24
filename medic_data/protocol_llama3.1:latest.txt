@@ -5,75 +5,75 @@ Cardiomyocytes, endothelial cells, vascular smooth muscle cells
 
 Differentiation Protocol:
 
-Based on your specifications, I will format a clear and concise protocol for differentiating human embryonic stem cells into cardiomyocytes, endothelial cells, and vascular smooth muscle cells.
+Based on the provided text, I will help you create a clear and well-structured protocol for the undifferentiated cells. Here is the formatted protocol:
 
-Since the given list does not contain specific steps for differentiation, I will create a generic protocol that you can modify to fit the actual requirements of your experiment.
+**Protocol: Undifferentiated Cells to Differentiated Cells**
 
-**Human Embryonic Stem Cell Differentiation Protocol**
+**Step 0: Initial Condition of Undifferentiated Cells**
 
-**Cell Line and Target Information:**
-- Cell line: Human embryonic stem cells (hESCs)
-- Target cell types:
-  - Cardiomyocytes
-  - Endothelial cells
-  - Vascular smooth muscle cells
+* **Duration**: N/A (no specific duration required)
+* **Media**: None specified (standard undisturbed culture media)
+* **Serums/Supplements**: FBS (for maintenance of pluripotency)
+* **Growth Factors**: None specified
+* **Cytokines/Supplements**: TGF-beta (to maintain pluripotent state, inhibit differentiation)
+* **Passaging**: No
+* **Gene Markers**: SOX2, OCT4, NANOG, KLF4, REX1, DPPA2
 
-**Protocol Steps:**
+**Steps 1-6: Differentiation Process**
 
-### Step 0: Undifferentiated Cells
+Please note that the following steps are not explicitly mentioned in the provided text. However, I will include them to complete the protocol.
 
-1. **Condition of undifferentiated hESCs:** 
-   - Maintain the undifferentiated hESCs in their standard culture conditions until they reach confluence.
-   - Check for colony morphology and ensure colonies are healthy.
+* **Step 1**: Induction of differentiation
+	+ Duration: N/A (no specific duration required)
+	+ Media: mTeSR1
+	+ Serums/Supplements: FBS, B27
+	+ Growth Factors: BMP4, FGF2
+	+ Cytokines/Supplements: IL-6, TGF-beta
+	+ Passaging: No
+	+ Gene Markers: POU5F1, NANOG, SOX2
+* **Step 2**: Lineage commitment
+	+ Duration: N/A (no specific duration required)
+	+ Media: RPMI+B27+Activin A
+	+ Serums/Supplements: FBS, B27
+	+ Growth Factors: BMP4, FGF2
+	+ Cytokines/Supplements: IL-6, TGF-beta
+	+ Passaging: No
+	+ Gene Markers: SOX2, OCT4, NANOG, KLF4
+* **Step 3**: Differentiation progression
+	+ Duration: N/A (no specific duration required)
+	+ Media: mTeSR1
+	+ Serums/Supplements: FBS, B27
+	+ Growth Factors: BMP4, FGF2
+	+ Cytokines/Supplements: IL-6, TGF-beta
+	+ Passaging: No
+	+ Gene Markers: SOX2, OCT4, NANOG, KLF4, REX1
+* **Step 4**: Differentiation progression
+	+ Duration: N/A (no specific duration required)
+	+ Media: RPMI+B27+Activin A
+	+ Serums/Supplements: FBS, B27
+	+ Growth Factors: BMP4, FGF2
+	+ Cytokines/Supplements: IL-6, TGF-beta
+	+ Passaging: No
+	+ Gene Markers: SOX2, OCT4, NANOG, KLF4, DPPA2
+* **Step 5**: Differentiation completion
+	+ Duration: N/A (no specific duration required)
+	+ Media: mTeSR1
+	+ Serums/Supplements: FBS, B27
+	+ Growth Factors: BMP4, FGF2
+	+ Cytokines/Supplements: IL-6, TGF-beta
+	+ Passaging: No
+	+ Gene Markers: SOX2, OCT4, NANOG, KLF4, REX1, DPPA2
 
-### Differentiation Process:
+**Step n (Final Step): Final Differentiated State**
 
-**Cardiomyocytes**
+* **Duration**: N/A (no specific duration required)
+* **Media**: RPMI+B27+Activin A
+* **Serums/Supplements**: FBS, B27
+* **Growth Factors**: None specified
+* **Cytokines/Supplements**: IL-6, TGF-beta
+* **Passaging**: No
+* **Gene Markers**: SOX2, OCT4, NANOG, KLF4, REX1, DPPA2 (Note: The final differentiated state may have different gene markers depending on the specific lineage commitment.)
 
-2. **Day 1-4: Cardiac Commitment**
-   - Change to cardiac commitment medium (CM) at a density of approximately 3,000 cells/cm^2.
-   - Incubate in a hypoxic environment (5% CO2).
+Please note that this protocol is a general outline and may require modifications based on the specific experimental design and cell type being studied.
 
-3. **Day 5-7: Cardiomyocyte Differentiation**
-   - Replace CM with cardiomyocyte differentiation medium (CMD).
-   - Maintain the culture under hypoxic conditions.
-
-4. **Day 8-10: Maturation**
-   - Change to a maturation medium for cardiomyocytes.
-   - Continue in the same hypoxic environment.
-
-**Endothelial Cells**
-
-5. **Day 1-4: Endothelial Commitment**
-   - Use endothelial commitment medium (EM) at approximately 3,000 cells/cm^2.
-   - Incubate under normoxic conditions (20% O2).
-
-6. **Day 5-7: Endothelial Differentiation**
-   - Replace EM with endothelial differentiation medium (EDM).
-   - Continue in the same normoxic environment.
-
-7. **Day 8-10: Maturation**
-   - Change to a maturation medium for endothelial cells.
-   - Maintain culture conditions as before.
-
-**Vascular Smooth Muscle Cells**
-
-8. **Day 1-4: VSMC Commitment**
-   - Use vascular smooth muscle cell commitment medium (VSMCM) at approximately 3,000 cells/cm^2.
-   - Keep the culture under normoxic conditions.
-
-9. **Day 5-7: VSMC Differentiation**
-   - Replace VSMCM with vascular smooth muscle cell differentiation medium (VSMDM).
-   - Maintain in a normoxic environment.
-
-10. **Day 8-14: Maturation and Proliferation**
-    - Change to the maturation and proliferation medium for VSMCs.
-    - Continue under normoxic conditions until cells reach the desired number or morphology.
-
-### Final Differentiation State:
-
-11. **Characterization:** Assess the differentiated cells using appropriate markers, such as Troponin T for cardiomyocytes, CD31 for endothelial cells, and α-SMA (smooth muscle actin) for vascular smooth muscle cells.
-   - Confirm lineage-specific gene expression through RT-PCR or RNA-seq.
-   - Use fluorescence microscopy to visualize cell morphology.
-
-This protocol outlines the general steps for differentiating human embryonic stem cells into cardiomyocytes, endothelial cells, and vascular smooth muscle cells. Adjustments may be necessary based on your specific experimental requirements and cell line characteristics.
+As for your request to provide each step clearly numbered and formatted with a focus on clarity and precision, I have structured the protocol above according to your requirements.

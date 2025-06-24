@@ -1,3 +1,13 @@
+import sys
+from pathlib import Path
+
+SCRIPT_DIR = Path(__file__).parent.absolute()
+BASIC_TOOLS_DIR = SCRIPT_DIR / "basic_tools"
+
+sys.path.insert(0, str(SCRIPT_DIR))  # .../thesis/scripts_v2
+sys.path.insert(0, str(BASIC_TOOLS_DIR))  # .../thesis/scripts_v2/basic_tools
+
+
 from langchain_community.vectorstores.chroma import Chroma
 from langchain_community.embeddings.ollama import OllamaEmbeddings
 
@@ -6,7 +16,6 @@ from basic_tools import CheckChromaIntegrity
 from basic_tools.populate_db_v3 import populate_db
 from basic_tools.query_data import query_rag
 from basic_tools.summaries_v3 import generate_summary
-from more_tools.classify_query import classify_query
 
 embedding_function = OllamaEmbeddings(model=MODEL)
 vectorstore = Chroma(persist_directory=CHROMA_PATH, embedding_function=embedding_function)
@@ -35,8 +44,6 @@ def interactive_chat():
           
     try:
         query = QUESTION.strip()
-        query_type = classify_query(query)
-        print(f"Query: {query_type}")
 
         summary_triggers = [
             'summary', 'summarize', 'overview', 

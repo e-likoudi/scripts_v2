@@ -7,5 +7,5 @@ PROTOCOL_MODEL = "llama3.1:latest"
 PROTOCOL_FILE = f"/Users/chara/Documents/thesis/scripts_v2/medic_data/protocol_{PROTOCOL_MODEL}.txt"
 
 BOOK_FOR_QA = "yang2008"
-QUESTION = "describe to me the protocol used in the study to differentiate the embryonic stem cells"
+QUESTION = "What is the main finding of the paper?"
 

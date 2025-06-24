@@ -5,7 +5,7 @@ sys.path.append(str(Path(__file__).parent.parent))
 from langchain_community.llms.ollama import Ollama
 from basic_tools.config import PROTOCOL_MODEL
 
-def create_protocol(sorted_steps, cell_line):
+def create_protocol(sorted_steps, cell_line, gene_markers):
     prompt = """
     You are an expert in biological protocols.
     You are given a series of steps in a differentiation protocol for stem cells.
@@ -13,6 +13,7 @@ def create_protocol(sorted_steps, cell_line):
     Take into account the following:
     - Cell line and target information: {cell_line}
     - Differentiation stages, duration, description and specific steps: {stages}
+    - The following details about the basic media, gene markers, and other relevant information: {gene_markers}
 
     Each step should be clearly numbered and formatted, with a focus on clarity and precision.
     The protocol should include the following:
@@ -22,7 +23,7 @@ def create_protocol(sorted_steps, cell_line):
     
     """
 
-    formatted_prompt = prompt.format(stages=sorted_steps, cell_line=cell_line)
+    formatted_prompt = prompt.format(cell_line=cell_line, stages=sorted_steps, gene_markers=gene_markers)
 
     model = Ollama(model=PROTOCOL_MODEL)
     response = model.invoke(formatted_prompt)

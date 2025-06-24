@@ -9,8 +9,7 @@ from new_protocol_tools.cell_line import identify_cell_line
 from new_protocol_tools.differentiation import differentiation_stage
 from new_protocol_tools.small_summaries import generate_summary
 from new_protocol_tools.sort_stages import process_stages
-from new_protocol_tools.durations import calculate_durations
-from new_protocol_tools.merge_stages import merge_similar_steps
+from new_protocol_tools import IdentifyDetails
 from new_protocol_tools.refine_desc import create_protocol
 from basic_tools.config import CHROMA_PATH, BOOK_FOR_QA, MODEL, PROTOCOL_FILE
 
@@ -62,11 +61,29 @@ def protocol():
     print(f"Processed {len(sort_steps)} stages")
     print(f"Sorted steps sample: {sort_steps[:3]}")  # Print first 3 sorted steps for verification
 
-    durations = calculate_durations(sort_steps)
+    durations = IdentifyDetails.calculate_durations(sort_steps)
     print(f"Calculated durations for {len(durations)} steps")
     print(f"Durations sample: {durations[:3]}")  # Print first 3 durations for verification
+
+    basic_media = IdentifyDetails.basic_media(durations)
+    print(f"Identified basic media for {len(basic_media)} steps")
+
+    serums_supplements = IdentifyDetails.serums_supplements(durations)
+    print(f"Identified serums and supplements for {len(serums_supplements)} steps")
+
+    growth_factors = IdentifyDetails.growth_factors(durations)
+    print(f"Identified growth factors for {len(growth_factors)} steps")
+
+    cytokines_supplements = IdentifyDetails.cytokines_supplements(durations)
+    print(f"Identified cytokines and supplements for {len(cytokines_supplements)} steps")
+
+    passaging = IdentifyDetails.passaging(durations)
+    print(f"Identified passaging for {len(passaging)} steps")
+
+    gene_markers = IdentifyDetails.gene_markers(durations)
+    print(f"Identified gene markers for {len(gene_markers)} steps")
     
-    protocol_steps = create_protocol(sort_steps, cell_line)
+    protocol_steps = create_protocol(sort_steps, cell_line, gene_markers)
     print(f"Created {len(protocol_steps)} protocol steps")
     
     save_final_report(cell_line, protocol_steps) 
