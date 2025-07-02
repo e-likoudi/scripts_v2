@@ -7,7 +7,10 @@ from basic_tools.config import PROTOCOL_MODEL
 
 def generate_summary(documents):
             
-    summaries = []
+    result = {
+            'summaries': [],
+            'source_documents': []
+        }    
     
     for i in range(0, len(documents), 2):
         batch = documents[i:i+2]
@@ -34,6 +37,7 @@ def generate_summary(documents):
             options={"temperature": 0}
         )
         
-        summaries.append(response['message']['content'].strip())
-    
-    return summaries
+        result['summaries'].append(response['message']['content'].strip())
+        result['source_documents'].append(batch)  
+
+    return result

@@ -5,7 +5,7 @@ sys.path.append(str(Path(__file__).parent.parent))
 from langchain_community.llms.ollama import Ollama 
 from langchain.prompts import ChatPromptTemplate
 
-def differentiation_stage(summary):  
+def differentiation_stage(summary_data):  
     prompt_template = """
     You are an expert in stem cell biology analyzing protocol summaries.  
     For the given summary, determine if it describes a specific stage in cell differentiation. 
@@ -36,18 +36,28 @@ def differentiation_stage(summary):
 
     """
 
-    prompt_template = ChatPromptTemplate.from_template(prompt_template)
-    prompt = prompt_template.format(summary=summary)
-    model = Ollama(model="llama3.1:latest")
-    result = model.invoke(prompt)
+    results = {
+        'analysis': [],
+        'source_documents': summary_data['source_documents']
+    }
 
-    data = {}
-    stage = "No differentiation step"
-    for line in result.splitlines():
-        if line.startswith("stage:"):
-            stage = line.split(":", 1)[1].strip()
-        elif line.startswith("reason:"):
-            data["reason"] = line.split(":", 1)[1].strip()
-        elif line.startswith("specific_step:"):
-            data["specific_step"] = line.split(":", 1)[1].strip()
-    return {stage: data}
+    prompt_template = ChatPromptTemplate.from_template(prompt_template)
+    model = Ollama(model="llama3.1:latest")
+
+    for summary in summary_data['summaries']:
+        prompt = prompt_template.format(summary=summary)
+        result = model.invoke(prompt)
+
+        data = {}
+        stage = "No differentiation step"
+        for line in result.splitlines():
+            if line.startswith("stage:"):
+                stage = line.split(":", 1)[1].strip()
+            elif line.startswith("reason:"):
+                data["reason"] = line.split(":", 1)[1].strip()
+            elif line.startswith("specific_step:"):
+                data["specific_step"] = line.split(":", 1)[1].strip()
+        
+        results['analysis'].append({stage: data})
+    
+    return results

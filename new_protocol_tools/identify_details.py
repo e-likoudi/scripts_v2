@@ -25,11 +25,7 @@ class IdentifyDetails:
 
         DO NOT make any changes to the "stage", "reason", or "specific_step" fields.
         Respond in the following format:
-            "stage"
             "duration": "[Duration in hours or days, e.g., '24 hours', '3 days']"
-            "reason"
-            "specific_step"
-
         """
         durations = []
         
@@ -43,243 +39,151 @@ class IdentifyDetails:
 
         return durations
     
-    def basic_media(steps_with_durations):
+    def basic_media(documents):
         media_prompt = """
-        You are an expert in stem cell biology analyzing protocol steps. 
-        For each step of the protocol you are given, identify the basic media used in that step.
-        
-        Their format is: 
-            "stage": "[Undifferentiated cells/Differentiation Process/Differentiated cells/No differentiation step]",
-            "duration": "[Duration in hours or days, e.g., '24 hours', '3 days']",
-            "reason": "One paragraph describing the procedure in that stage",  
-            "specific_step": "[Optional: lineage specification if applicable]" 
+        You are an expert in stem cell biology analyzing protocol details. 
+        For each part of the protocol you are given, identify the basic media used in it.
 
-        Step:
-        {step}
+        Text:
+        {text}
 
-        DO NOT make any changes to the "stage", "duration", "reason", or "specific_step" fields.
         Respond in the following format:
-            "stage"
-            "duration"
             "media": "[List of media used, e.g., 'mTeSR1, RPMI+B27+Activin A']"
-            "reason"
-            "specific_step"
+        Or if no media is used:
+            "media": "No media used"
         """
         
         media_results = []
         
-        for step in steps_with_durations:
-            prompt_template = ChatPromptTemplate.from_template(media_prompt)
-            prompt = prompt_template.format(step=step)
-            model = Ollama(model=PROTOCOL_MODEL)
-            result = model.invoke(prompt)
+        prompt_template = ChatPromptTemplate.from_template(media_prompt)
+        prompt = prompt_template.format(text=documents)
+        model = Ollama(model=PROTOCOL_MODEL)
+        result = model.invoke(prompt)
 
-            media_results.append(result)
+        media_results.append(result)
 
         return media_results
     
-    def serums_supplements(steps_with_bm):
+    def serums_supplements(documents):
         serums_prompt = """
         You are an expert in stem cell biology analyzing protocol steps. 
-        For each step of the protocol you are given, identify the serums and supplements used in that step.
-        
-        Their format is: 
-            "stage": "[Undifferentiated cells/Differentiation Process/Differentiated cells/No differentiation step]",
-            "duration": "[Duration in hours or days, e.g., '24 hours', '3 days']",
-            "media": "[List of media used, e.g., 'mTeSR1, RPMI+B27+Activin A']"
-            "reason": "One paragraph describing the procedure in that stage",  
-            "specific_step": "[Optional: lineage specification if applicable]" 
+        For each part of the protocol you are given, identify the serums and supplements used in that part.
 
-        Step:
-        {step}
+        Text:
+        {text}
 
-        DO NOT make any changes to the "stage", "duration", "media", "reason", or "specific_step" fields.
         Respond in the following format:
-            "stage"
-            "duration"
-            "media"
             "serums_supplements": "[List of serums and supplements used, e.g., 'FBS, B27']"
-            "reason"
-            "specific_step"
+        Or if no serums or supplements are used:
+            "serums_supplements": "No serums or supplements used"
         """
         
         serums_results = []
         
-        for step in steps_with_bm:
-            prompt_template = ChatPromptTemplate.from_template(serums_prompt)
-            prompt = prompt_template.format(step=step)
-            model = Ollama(model=PROTOCOL_MODEL)
-            result = model.invoke(prompt)
+        prompt_template = ChatPromptTemplate.from_template(serums_prompt)
+        prompt = prompt_template.format(text=documents)
+        model = Ollama(model=PROTOCOL_MODEL)
+        result = model.invoke(prompt)
 
-            serums_results.append(result)
+        serums_results.append(result)
 
         return serums_results
     
-    def growth_factors(steps_with_serums):
+    def growth_factors(documents):
         growth_factors_prompt = """
         You are an expert in stem cell biology analyzing protocol steps. 
-        For each step of the protocol you are given, identify the growth factors used in that step.
+        For each part of the protocol you are given, identify the growth factors used in that part.
         
-        Their format is: 
-            "stage": "[Undifferentiated cells/Differentiation Process/Differentiated cells/No differentiation step]",
-            "duration": "[Duration in hours or days, e.g., '24 hours', '3 days']",
-            "media": "[List of media used, e.g., 'mTeSR1, RPMI+B27+Activin A']",
-            "serums_supplements": "[List of serums and supplements used, e.g., 'FBS, B27']",
-            "reason": "One paragraph describing the procedure in that stage",  
-            "specific_step": "[Optional: lineage specification if applicable]" 
+        Text:
+        {text}
 
-        Step:
-        {step}
-
-        DO NOT make any changes to the "stage", "duration", "media", "serums_supplements", "reason", or "specific_step" fields.
         Respond in the following format:
-            "stage"
-            "duration"
-            "media"
-            "serums_supplements"
             "growth_factors": "[List of growth factors used, e.g., 'BMP4, FGF2']"
-            "reason"
-            "specific_step"
+        Or if no growth factors are used:
+            "growth_factors": "No growth factors used"
         """
         
         growth_factors_results = []
         
-        for step in steps_with_serums:
-            prompt_template = ChatPromptTemplate.from_template(growth_factors_prompt)
-            prompt = prompt_template.format(step=step)
-            model = Ollama(model=PROTOCOL_MODEL)
-            result = model.invoke(prompt)
+        prompt_template = ChatPromptTemplate.from_template(growth_factors_prompt)
+        prompt = prompt_template.format(text=documents)
+        model = Ollama(model=PROTOCOL_MODEL)
+        result = model.invoke(prompt)
 
-            growth_factors_results.append(result)
+        growth_factors_results.append(result)
 
         return growth_factors_results
     
-    def cytokines_supplements(steps_with_growth_factors):
+    def cytokines_supplements(documents):
         cytokines_prompt = """
         You are an expert in stem cell biology analyzing protocol steps. 
-        For each step of the protocol you are given, identify the cytokines and chemical supplements used in that step.
-        
-        Their format is: 
-            "stage": "[Undifferentiated cells/Differentiation Process/Differentiated cells/No differentiation step]",
-            "duration": "[Duration in hours or days, e.g., '24 hours', '3 days']",
-            "media": "[List of media used, e.g., 'mTeSR1, RPMI+B27+Activin A']",
-            "serums_supplements": "[List of serums and supplements used, e.g., 'FBS, B27']",
-            "growth_factors": "[List of growth factors used, e.g., 'BMP4, FGF2']",
-            "reason": "One paragraph describing the procedure in that stage",  
-            "specific_step": "[Optional: lineage specification if applicable]" 
+        For each part of the protocol you are given, identify the cytokines and chemical supplements used in that part.
+    
+        Text:
+        {text}
 
-        Step:
-        {step}
-
-        DO NOT make any changes to the "stage", "duration", "media", "serums_supplements", "growth_factors", "reason", or "specific_step" fields.
         Respond in the following format:
-            "stage"
-            "duration"
-            "media"
-            "serums_supplements"
-            "growth_factors"
             "cytokines_supplements": "[List of cytokines and supplements used, e.g., 'IL-6, TGF-beta']"
-            "reason"
-            "specific_step"
+        Or if no cytokines or supplements are used:
+            "cytokines_supplements": "No cytokines or supplements used"
         """
         
         cytokines_results = []
         
-        for step in steps_with_growth_factors:
-            prompt_template = ChatPromptTemplate.from_template(cytokines_prompt)
-            prompt = prompt_template.format(step=step)
-            model = Ollama(model=PROTOCOL_MODEL)
-            result = model.invoke(prompt)
+        prompt_template = ChatPromptTemplate.from_template(cytokines_prompt)
+        prompt = prompt_template.format(text=documents)
+        model = Ollama(model=PROTOCOL_MODEL)
+        result = model.invoke(prompt)
 
-            cytokines_results.append(result)
+        cytokines_results.append(result)
 
         return cytokines_results
 
-    def passaging(steps):
+    def passaging(documents):
         passaging_prompt = """
         You are an expert in stem cell biology analyzing protocol steps. 
-        For each step of the protocol you are given, identify if it involves passaging of cells.
-        
-        Their format is: 
-            "stage": "[Undifferentiated cells/Differentiation Process/Differentiated cells/No differentiation step]",
-            "duration": "[Duration in hours or days, e.g., '24 hours', '3 days']",
-            "media": "[List of media used, e.g., 'mTeSR1, RPMI+B27+Activin A']",
-            "serums_supplements": "[List of serums and supplements used, e.g., 'FBS, B27']",
-            "growth_factors": "[List of growth factors used, e.g., 'BMP4, FGF2']",
-            "cytokines_supplements": "[List of cytokines and supplements used, e.g., 'IL-6, TGF-beta']",
-            "reason": "One paragraph describing the procedure in that stage",  
-            "specific_step": "[Optional: lineage specification if applicable]" 
+        For each part of the protocol you are given, identify if it involves passaging of cells.
+    
+        Text:
+        {text}
 
-        Step:
-        {step}
-
-        DO NOT make any changes to the "stage", "duration", "media", "reason", or "specific_step" fields.
         Respond in the following format:
-            "stage"
-            "duration"
-            "media"
-            "serums_supplements"
-            "growth_factors"
-            "cytokines_supplements"
             "passaging": "[Yes/No]"
-            "reason"
-            "specific_step"
         """
         
         passaging_results = []
         
-        for step in steps:
-            prompt_template = ChatPromptTemplate.from_template(passaging_prompt)
-            prompt = prompt_template.format(step=step)
-            model = Ollama(model=PROTOCOL_MODEL)
-            result = model.invoke(prompt)
+        prompt_template = ChatPromptTemplate.from_template(passaging_prompt)
+        prompt = prompt_template.format(text=documents)
+        model = Ollama(model=PROTOCOL_MODEL)
+        result = model.invoke(prompt)
 
-            passaging_results.append(result)
+        passaging_results.append(result)
 
         return passaging_results
 
-    def gene_markers(final_steps):
+    def gene_markers(documents):
         gene_markers_prompt = """
         You are an expert in stem cell biology analyzing protocol steps. 
-        For each step of the protocol you are given, identify the gene markers associated with that step.
-        
-        Their format is: 
-            "stage": "[Undifferentiated cells/Differentiation Process/Differentiated cells/No differentiation step]",
-            "duration": "[Duration in hours or days, e.g., '24 hours', '3 days']",
-            "media": "[List of media used, e.g., 'mTeSR1, RPMI+B27+Activin A']",
-            "serums_supplements": "[List of serums and supplements used, e.g., 'FBS, B27']",
-            "growth_factors": "[List of growth factors used, e.g., 'BMP4, FGF2']",
-            "cytokines_supplements": "[List of cytokines and supplements used, e.g., 'IL-6, TGF-beta']",
-            "passaging": "[Yes/No]",
-            "reason": "One paragraph describing the procedure in that stage",  
-            "specific_step": "[Optional: lineage specification if applicable]" 
+        For each part of the protocol you are given, identify the gene markers associated with that part.
 
-        Step:
-        {step}
+        Text:
+        {text}
 
-        DO NOT make any changes to the "stage", "duration", "media", "reason", or "specific_step" fields.
         Respond in the following format:
-            "stage"
-            "duration"
-            "media"
-            "serums_supplements"
-            "growth_factors"
-            "cytokines_supplements"
-            "passaging"
             "gene_markers": "[List of gene markers, e.g., 'cTNT, SOX2']"
-            "reason"
-            "specific_step"
+        Or if no gene markers are mentioned:
+            "gene_markers": "No gene markers mentioned"
         """
         
         gene_markers_results = []
         
-        for step in final_steps:
-            prompt_template = ChatPromptTemplate.from_template(gene_markers_prompt)
-            prompt = prompt_template.format(step=step)
-            model = Ollama(model=PROTOCOL_MODEL)
-            result = model.invoke(prompt)
+        prompt_template = ChatPromptTemplate.from_template(gene_markers_prompt)
+        prompt = prompt_template.format(text=documents)
+        model = Ollama(model=PROTOCOL_MODEL)
+        result = model.invoke(prompt)
 
-            gene_markers_results.append(result)
+        gene_markers_results.append(result)
 
         return gene_markers_results
     
