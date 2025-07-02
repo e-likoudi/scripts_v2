@@ -81,6 +81,7 @@ def protocol():
 
     gene_markers = IdentifyDetails.gene_markers(passaging)
     print(f"Identified gene markers for {len(gene_markers)} steps")
+    #print(f"Result sample: {gene_markers[:3]}")    #debugging
     
     protocol_steps = create_protocol(cell_line, gene_markers)
     print(f"Created protocol steps")

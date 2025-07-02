@@ -5,52 +5,37 @@ Cardiomyocytes, endothelial cells, vascular smooth muscle cells
 
 Differentiation Protocol:
 
-Based on the provided raw protocol data, I will organize it into a logical and clear format. Since there is no differentiation step mentioned in the raw data, I'll assume that the goal is to maintain the undifferentiated state of human embryonic stem cells.
+Here is a structured version of the protocol based on the provided text:
 
-**Step 0: Maintenance of Undifferentiated Cells**
+**Step 0: Undifferentiated Cells**
 
-* Cell Line: Human Embryonic Stem Cells (hESCs)
-* Condition: The hESCs are maintained in an undifferentiated state
-* Media: No media used (note: typically, hESCs require a specific medium for maintenance)
-* Supplements: No serums or supplements used (note: FBS, LIF, and other supplements may be required for hESC maintenance)
-* Growth Factors: No growth factors used
-* Cytokines: No cytokines or supplements used
-* Passaging: No passaging performed
-* Markers: No gene markers mentioned
+* Cell line: N/A
+* Source: NOD/SCID-gamma mice or SCID beige mice
+* Media: DMEM (Mediatech) with 15% FBS
+* Initial cell type: KDRlow/C-KITneg cells
 
-Since the raw data does not provide specific information on differentiation, I will assume that this step is focused on maintaining the undifferentiated state of hESCs.
+**Step 1: Preparation of Undifferentiated Cells**
 
-**Steps 1-5 (optional): Differentiation Process**
+* Cells were isolated from day-6 embryoid bodies using trypsin.
+* Cells were cultured in StemPro34 medium with VEGF (10 ng/ml), bFGF (10 ng/ml), and DKK1 (150 ng/ml) for 5-10 days.
 
-If you want to guide the cells towards a specific lineage (e.g., cardiomyocytes, endothelial cells, vascular smooth muscle cells), you would typically introduce specific differentiation signals, medium changes, or lineage-commitment steps. However, since there is no raw data available for these steps, I will provide some general information on how each lineage might be induced:
+**Step 2: Differentiation Induction**
 
-1. **Cardiomyocyte Differentiation**:
-	* Introduction of specific growth factors (e.g., Wnt3a, BMP4)
-	* Medium changes to promote cardiomyocyte differentiation
-2. **Endothelial Cell Differentiation**:
-	* Introduction of VEGF or other angiogenic factors
-	* Medium changes to support endothelial cell differentiation
-3. **Vascular Smooth Muscle Cell (VSMC) Differentiation**:
-	* Introduction of PDGF-BB or other smooth muscle cell growth factors
-	* Medium changes to promote VSMC differentiation
+* Cells were injected directly into the left ventricular wall of NOD/SCID-gamma mice or SCID beige mice in an open-chest procedure.
+* Hearts were harvested 2-11 weeks post-surgery, fixed in 1% PFA in cacodylate buffer and sectioned at 10mm.
 
-Keep in mind that these are general examples, and the specific requirements for each lineage may vary depending on the experimental design.
+**Step 3: Immunohistochemistry**
 
-**Step 6: Final Differentiated State**
+* Immuno-histochemistry was done with GFP (Chemicon), a-actinin (Sigma), CD31 (Dako), and smooth muscle MHC antibodies (Biomedical Technologies).
+* Confocal images were analyzed for colocalization using ImageJ and Pierre Bourdoncle’s plugin.
 
-Once the cells have reached their desired differentiated state (e.g., cardiomyocytes, endothelial cells, or vascular smooth muscle cells), you can characterize them using various markers:
+**Step 4: In Vivo Assays**
 
-* Cardiomyocyte-specific markers:
-	+ Troponin T
-	+ α-Actinin
-	+ Connexin 43
-* Endothelial cell-specific markers:
-	+ CD31 (PECAM-1)
-	+ VE-cadherin
-	+ VWF
-* VSMC-specific markers:
-	+ SM22α
-	+ Calponin
-	+ α-SMA
+* Ventricular function was assessed using 9.4 Tesla magnetic resonance imaging.
+* Patch-clamp recordings were performed on KDRlow/C-KITneg cells cultured in a MEA (Multi Channel Systems) chamber in StemPro34 with 10 ng/ml VEGF and 150 ng/ml DKK1 for 2-4 weeks.
 
-Please note that this is a highly simplified outline, and the actual protocol would depend on specific experimental requirements and conditions.
+**Step 5: Final Differentiated State**
+
+* The final differentiated state of the cells is KDRlow/C-KITneg-derived cells, which are capable of forming tube-like structures, expressing endothelial markers such as CD31 and VE-cadherin, and contributing to myocardial regeneration in infarcted hearts.
+
+Note that this is a simplified version of the protocol, and some steps may overlap or be missing. Additionally, the specific details of each step may vary depending on the context and requirements of the experiment.
