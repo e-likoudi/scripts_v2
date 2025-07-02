@@ -26,16 +26,17 @@ def get_documents_from_chroma():
     return documents
 
 def summaries_for_steps(summary_data):
+
     steps = []
-    analysis_results = differentiation_stage(summary_data)
-    
-    for analysis in analysis_results['analysis']:
-        stage_name, stage_data = next(iter(analysis.items()))
+
+    for summary in summary_data['summaries']:
+        result = differentiation_stage([summary])
+        stage_name, stage_data = next(iter(result.items()))
         steps.append({
             'stage': stage_name,
             'reason': stage_data.get('reason', ''),
             'specific_step': stage_data.get('specific_step', ''),
-            'source_documents': summary_data['source_documents'][len(steps)]
+            'source_documents': summary['source_documents']
         })
     return steps
 
@@ -56,40 +57,32 @@ def protocol():
     summary_data = generate_summary(documents)    # generate summaries for all documents
     print(f"Generated {len(summary_data['summaries'])} summaries")
 
-    steps = summaries_for_steps(summary_data)     # Classify summaries into differentiation stages
+    steps = differentiation_stage(summary_data)
     sort_steps = process_stages(steps)          # Sort by stage
     print(f"Processed {len(sort_steps)} stages")
 
     durations = IdentifyDetails.calculate_durations(sort_steps)
     print(f"Calculated durations for {len(durations)} steps")
 
-    enriched_steps = []
+    basic_media = IdentifyDetails.basic_media(durations)
+    print(f"Identified basic media for {len(basic_media)} steps")
 
-    for step in sort_steps:
-        document = "\n".join(doc.page_content for doc in step['source_documents'])
+    serums_supplements = IdentifyDetails.serums_supplements(basic_media)
+    print(f"Identified serums and supplements for {len(serums_supplements)} steps")
 
-        basic_media = IdentifyDetails.basic_media(document)
-        serums_supplements = IdentifyDetails.serums_supplements(document)
-        growth_factors = IdentifyDetails.growth_factors(document)
-        cytokines_supplements = IdentifyDetails.cytokines_supplements(document)
-        passaging = IdentifyDetails.passaging(document)
-        gene_markers = IdentifyDetails.gene_markers(document)
+    growth_factors = IdentifyDetails.growth_factors(serums_supplements)
+    print(f"Identified growth factors for {len(growth_factors)} steps")
 
-        enriched_steps.append({
-            'stage': step['stage'],
-            'reason': step['reason'],
-            'specific_step': step['specific_step'],
-            'basic_media': basic_media,
-            'serums_supplements': serums_supplements,
-            'growth_factors': growth_factors,
-            'cytokines_supplements': cytokines_supplements,
-            'passaging': passaging,
-            'gene_markers': gene_markers,
-        })
+    cytokines_supplements = IdentifyDetails.cytokines_supplements(growth_factors)
+    print(f"Identified cytokines and supplements for {len(cytokines_supplements)} steps")
 
-    print(f"Enriched {len(enriched_steps)} steps with additional details")
+    passaging = IdentifyDetails.passaging(cytokines_supplements)
+    print(f"Identified passaging for {len(passaging)} steps")
+
+    gene_markers = IdentifyDetails.gene_markers(passaging)
+    print(f"Identified gene markers for {len(gene_markers)} steps")
     
-    protocol_steps = create_protocol(cell_line, durations, enriched_steps)
+    protocol_steps = create_protocol(cell_line, gene_markers)
     print(f"Created protocol steps")
     
     save_final_report(cell_line, protocol_steps) 

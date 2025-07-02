@@ -36,28 +36,32 @@ def differentiation_stage(summary_data):
 
     """
 
-    results = {
-        'analysis': [],
-        'source_documents': summary_data['source_documents']
-    }
+    diff_list = []
 
     prompt_template = ChatPromptTemplate.from_template(prompt_template)
     model = Ollama(model="llama3.1:latest")
 
-    for summary in summary_data['summaries']:
+    for i, summary in enumerate(summary_data['summaries']):
         prompt = prompt_template.format(summary=summary)
         result = model.invoke(prompt)
 
-        data = {}
-        stage = "No differentiation step"
+        entry = {
+            "stage": "No differentiation step in this summary",
+            "reason": "",
+            "specific_step": "",
+            "source_documents": summary_data['source_documents'][i] if i < len(summary_data['source_documents']) else None
+        }
+
+        # Parse the result
         for line in result.splitlines():
-            if line.startswith("stage:"):
-                stage = line.split(":", 1)[1].strip()
-            elif line.startswith("reason:"):
-                data["reason"] = line.split(":", 1)[1].strip()
-            elif line.startswith("specific_step:"):
-                data["specific_step"] = line.split(":", 1)[1].strip()
+            line = line.strip().strip('"').strip(',')
+            if line.startswith('"stage":'):
+                entry["stage"] = line.split(':', 1)[1].strip().strip('"')
+            elif line.startswith('"reason":'):
+                entry["reason"] = line.split(':', 1)[1].strip().strip('"')
+            elif line.startswith('"specific_step":'):
+                entry["specific_step"] = line.split(':', 1)[1].strip().strip('"')
         
-        results['analysis'].append({stage: data})
-    
-    return results
+        diff_list.append(entry)
+
+    return diff_list

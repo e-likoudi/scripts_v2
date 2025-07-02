@@ -5,75 +5,52 @@ Cardiomyocytes, endothelial cells, vascular smooth muscle cells
 
 Differentiation Protocol:
 
-Based on the provided text, I will help you create a clear and well-structured protocol for the undifferentiated cells. Here is the formatted protocol:
+Based on the provided raw protocol data, I will organize it into a logical and clear format. Since there is no differentiation step mentioned in the raw data, I'll assume that the goal is to maintain the undifferentiated state of human embryonic stem cells.
 
-**Protocol: Undifferentiated Cells to Differentiated Cells**
+**Step 0: Maintenance of Undifferentiated Cells**
 
-**Step 0: Initial Condition of Undifferentiated Cells**
+* Cell Line: Human Embryonic Stem Cells (hESCs)
+* Condition: The hESCs are maintained in an undifferentiated state
+* Media: No media used (note: typically, hESCs require a specific medium for maintenance)
+* Supplements: No serums or supplements used (note: FBS, LIF, and other supplements may be required for hESC maintenance)
+* Growth Factors: No growth factors used
+* Cytokines: No cytokines or supplements used
+* Passaging: No passaging performed
+* Markers: No gene markers mentioned
 
-* **Duration**: N/A (no specific duration required)
-* **Media**: None specified (standard undisturbed culture media)
-* **Serums/Supplements**: FBS (for maintenance of pluripotency)
-* **Growth Factors**: None specified
-* **Cytokines/Supplements**: TGF-beta (to maintain pluripotent state, inhibit differentiation)
-* **Passaging**: No
-* **Gene Markers**: SOX2, OCT4, NANOG, KLF4, REX1, DPPA2
+Since the raw data does not provide specific information on differentiation, I will assume that this step is focused on maintaining the undifferentiated state of hESCs.
 
-**Steps 1-6: Differentiation Process**
+**Steps 1-5 (optional): Differentiation Process**
 
-Please note that the following steps are not explicitly mentioned in the provided text. However, I will include them to complete the protocol.
+If you want to guide the cells towards a specific lineage (e.g., cardiomyocytes, endothelial cells, vascular smooth muscle cells), you would typically introduce specific differentiation signals, medium changes, or lineage-commitment steps. However, since there is no raw data available for these steps, I will provide some general information on how each lineage might be induced:
 
-* **Step 1**: Induction of differentiation
-	+ Duration: N/A (no specific duration required)
-	+ Media: mTeSR1
-	+ Serums/Supplements: FBS, B27
-	+ Growth Factors: BMP4, FGF2
-	+ Cytokines/Supplements: IL-6, TGF-beta
-	+ Passaging: No
-	+ Gene Markers: POU5F1, NANOG, SOX2
-* **Step 2**: Lineage commitment
-	+ Duration: N/A (no specific duration required)
-	+ Media: RPMI+B27+Activin A
-	+ Serums/Supplements: FBS, B27
-	+ Growth Factors: BMP4, FGF2
-	+ Cytokines/Supplements: IL-6, TGF-beta
-	+ Passaging: No
-	+ Gene Markers: SOX2, OCT4, NANOG, KLF4
-* **Step 3**: Differentiation progression
-	+ Duration: N/A (no specific duration required)
-	+ Media: mTeSR1
-	+ Serums/Supplements: FBS, B27
-	+ Growth Factors: BMP4, FGF2
-	+ Cytokines/Supplements: IL-6, TGF-beta
-	+ Passaging: No
-	+ Gene Markers: SOX2, OCT4, NANOG, KLF4, REX1
-* **Step 4**: Differentiation progression
-	+ Duration: N/A (no specific duration required)
-	+ Media: RPMI+B27+Activin A
-	+ Serums/Supplements: FBS, B27
-	+ Growth Factors: BMP4, FGF2
-	+ Cytokines/Supplements: IL-6, TGF-beta
-	+ Passaging: No
-	+ Gene Markers: SOX2, OCT4, NANOG, KLF4, DPPA2
-* **Step 5**: Differentiation completion
-	+ Duration: N/A (no specific duration required)
-	+ Media: mTeSR1
-	+ Serums/Supplements: FBS, B27
-	+ Growth Factors: BMP4, FGF2
-	+ Cytokines/Supplements: IL-6, TGF-beta
-	+ Passaging: No
-	+ Gene Markers: SOX2, OCT4, NANOG, KLF4, REX1, DPPA2
+1. **Cardiomyocyte Differentiation**:
+	* Introduction of specific growth factors (e.g., Wnt3a, BMP4)
+	* Medium changes to promote cardiomyocyte differentiation
+2. **Endothelial Cell Differentiation**:
+	* Introduction of VEGF or other angiogenic factors
+	* Medium changes to support endothelial cell differentiation
+3. **Vascular Smooth Muscle Cell (VSMC) Differentiation**:
+	* Introduction of PDGF-BB or other smooth muscle cell growth factors
+	* Medium changes to promote VSMC differentiation
 
-**Step n (Final Step): Final Differentiated State**
+Keep in mind that these are general examples, and the specific requirements for each lineage may vary depending on the experimental design.
 
-* **Duration**: N/A (no specific duration required)
-* **Media**: RPMI+B27+Activin A
-* **Serums/Supplements**: FBS, B27
-* **Growth Factors**: None specified
-* **Cytokines/Supplements**: IL-6, TGF-beta
-* **Passaging**: No
-* **Gene Markers**: SOX2, OCT4, NANOG, KLF4, REX1, DPPA2 (Note: The final differentiated state may have different gene markers depending on the specific lineage commitment.)
+**Step 6: Final Differentiated State**
 
-Please note that this protocol is a general outline and may require modifications based on the specific experimental design and cell type being studied.
+Once the cells have reached their desired differentiated state (e.g., cardiomyocytes, endothelial cells, or vascular smooth muscle cells), you can characterize them using various markers:
 
-As for your request to provide each step clearly numbered and formatted with a focus on clarity and precision, I have structured the protocol above according to your requirements.
+* Cardiomyocyte-specific markers:
+	+ Troponin T
+	+ α-Actinin
+	+ Connexin 43
+* Endothelial cell-specific markers:
+	+ CD31 (PECAM-1)
+	+ VE-cadherin
+	+ VWF
+* VSMC-specific markers:
+	+ SM22α
+	+ Calponin
+	+ α-SMA
+
+Please note that this is a highly simplified outline, and the actual protocol would depend on specific experimental requirements and conditions.
