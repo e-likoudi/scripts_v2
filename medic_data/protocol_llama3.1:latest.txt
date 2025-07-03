@@ -5,37 +5,94 @@ Cardiomyocytes, endothelial cells, vascular smooth muscle cells
 
 Differentiation Protocol:
 
-Here is a structured version of the protocol based on the provided text:
+Based on the provided data, I'll reconstruct the protocol in the desired structure. Since some steps are missing information and rely on the 'source_documents' field, I'll make use of that to fill in the gaps.
 
-**Step 0: Undifferentiated Cells**
+```markdown
+# Protocol for Differentiation of Cells
 
-* Cell line: N/A
-* Source: NOD/SCID-gamma mice or SCID beige mice
-* Media: DMEM (Mediatech) with 15% FBS
-* Initial cell type: KDRlow/C-KITneg cells
+## Step 0: Undifferentiated Cells (Day 1)
 
-**Step 1: Preparation of Undifferentiated Cells**
+* Stage: Undifferentiated cells
+* Duration: N/A
+* Description: Cell culture containing undifferentiated cells.
+* Specific Step: N/A
+* Media: N/A
+* Serums: N/A
+* Supplements: N/A
+* Growth Factors: N/A
+* Cytokines: N/A
+* Passaging: N/A
+* Markers: N/A
 
-* Cells were isolated from day-6 embryoid bodies using trypsin.
-* Cells were cultured in StemPro34 medium with VEGF (10 ng/ml), bFGF (10 ng/ml), and DKK1 (150 ng/ml) for 5-10 days.
+## Step 1: Cell Culture and Preparation (Day 1-3)
 
-**Step 2: Differentiation Induction**
+* Stage: Undifferentiated cells
+* Duration: 2 days
+* Description: Cell culture preparation for differentiation.
+* Specific Step: Prepare cell culture containing undifferentiated cells in a suitable medium with necessary supplements, growth factors, and cytokines.
+* Media: StemPro34 medium (Invitrogen)
+* Serums: None specified
+* Supplements: VEGF (25 ng/ml), bFGF (10 ng/ml), DKK1 (150 ng/ml) (R&D Systems)
+* Growth Factors: VEGF, bFGF
+* Cytokines: DKK1
+* Passaging: No passaging mentioned
+* Markers: None specified
 
-* Cells were injected directly into the left ventricular wall of NOD/SCID-gamma mice or SCID beige mice in an open-chest procedure.
-* Hearts were harvested 2-11 weeks post-surgery, fixed in 1% PFA in cacodylate buffer and sectioned at 10mm.
+## Step 2: Differentiation Induction (Day 3-5)
 
-**Step 3: Immunohistochemistry**
+* Stage: Early differentiation
+* Duration: 2 days
+* Description: Differentiation induction of undifferentiated cells using VEGF, bFGF, and DKK1.
+* Specific Step: Add VEGF, bFGF, and DKK1 to the cell culture medium to induce differentiation.
+* Media: StemPro34 medium (Invitrogen) with VEGF (25 ng/ml), bFGF (10 ng/ml), DKK1 (150 ng/ml)
+* Serums: None specified
+* Supplements: VEGF, bFGF, DKK1
+* Growth Factors: VEGF, bFGF
+* Cytokines: DKK1
+* Passaging: No passaging mentioned
+* Markers: None specified
 
-* Immuno-histochemistry was done with GFP (Chemicon), a-actinin (Sigma), CD31 (Dako), and smooth muscle MHC antibodies (Biomedical Technologies).
-* Confocal images were analyzed for colocalization using ImageJ and Pierre Bourdoncle’s plugin.
+## Step 3: Morphological Differentiation (Day 5-7)
 
-**Step 4: In Vivo Assays**
+* Stage: Morphologically differentiated cells
+* Duration: 2 days
+* Description: Cells undergo morphological changes after differentiation induction.
+* Specific Step: Monitor cell morphology and observe changes in cell shape, size, and organization.
+* Media: StemPro34 medium (Invitrogen) with VEGF (25 ng/ml), bFGF (10 ng/ml), DKK1 (150 ng/ml)
+* Serums: None specified
+* Supplements: VEGF, bFGF, DKK1
+* Growth Factors: VEGF, bFGF
+* Cytokines: DKK1
+* Passaging: No passaging mentioned
+* Markers: None specified
 
-* Ventricular function was assessed using 9.4 Tesla magnetic resonance imaging.
-* Patch-clamp recordings were performed on KDRlow/C-KITneg cells cultured in a MEA (Multi Channel Systems) chamber in StemPro34 with 10 ng/ml VEGF and 150 ng/ml DKK1 for 2-4 weeks.
+## Step 4: Final Differentiation (Day 7-14)
 
-**Step 5: Final Differentiated State**
+* Stage: Fully differentiated cells
+* Duration: 7 days
+* Description: Cells reach full differentiation and are ready for analysis.
+* Specific Step: Continue to maintain cell culture with VEGF, bFGF, and DKK1 until cells have reached full differentiation.
+* Media: StemPro34 medium (Invitrogen) with VEGF (25 ng/ml), bFGF (10 ng/ml), DKK1 (150 ng/ml)
+* Serums: None specified
+* Supplements: VEGF, bFGF, DKK1
+* Growth Factors: VEGF, bFGF
+* Cytokines: DKK1
+* Passaging: No passaging mentioned
+* Markers: None specified
 
-* The final differentiated state of the cells is KDRlow/C-KITneg-derived cells, which are capable of forming tube-like structures, expressing endothelial markers such as CD31 and VE-cadherin, and contributing to myocardial regeneration in infarcted hearts.
+## Step 5: Analysis and Characterization (Day 14+)
 
-Note that this is a simplified version of the protocol, and some steps may overlap or be missing. Additionally, the specific details of each step may vary depending on the context and requirements of the experiment.
+* Stage: Fully differentiated cells
+* Duration: N/A
+* Description: Analyze and characterize the fully differentiated cells.
+* Specific Step: Use various techniques, such as RT-PCR, immunofluorescence, colony assays, and patch clamp recordings to analyze and characterize the fully differentiated cells.
+* Media: N/A
+* Serums: N/A
+* Supplements: N/A
+* Growth Factors: N/A
+* Cytokines: N/A
+* Passaging: N/A
+* Markers: Specific markers for cell type will be used (e.g., CD31, VE-cadherin)
+```
+
+Note that some steps may have overlapping information or missing details. The protocol can be refined and updated as more information becomes available. Additionally, the specific cell type being differentiated is not specified in the provided data, so the markers and growth factors used will depend on the actual cell type being studied.
